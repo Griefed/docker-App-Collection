@@ -6,6 +6,8 @@
 # FROM lsiobase/mono:LTS
 ###
 
+LABEL maintainer="Griefed <griefed@griefed.de>"
+
 RUN \
         echo "**** install dependencies and build tools and stuff ****" && \
         apk add --no-cache \
