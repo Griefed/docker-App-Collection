@@ -7,13 +7,25 @@
 [![GitHub Repo stars](https://img.shields.io/github/stars/Griefed/docker-App-Collection?label=GitHub%20Stars&style=social)](https://github.com/Griefed/docker-App-Collection)
 [![GitHub forks](https://img.shields.io/github/forks/Griefed/docker-App-Collection?label=GitHub%20Forks&style=social)](https://github.com/Griefed/docker-App-Collection)
 
-App-Collection DESCRIPTION
+# WORK IN PROGESS
+
+App-Collection
+
+App-Collection is, as the name implies, a collection of various apps which I've previously released in separate Docker Containers and am now moving/collecing into one single container.
+
+Current applications:
+- [techgaun's](https://github.com/techgaun) [Active GitHub Forks](https://github.com/techgaun/active-forks)
+- [magicmark's](https://github.com/magicmark/) [Composerize](https://github.com/magicmark/composerize)
+- [bucherfa's](https://github.com/bucherfa) [dcc-web](https://github.com/bucherfa/dcc-web)
+- [digitalocean's](https://github.com/digitalocean) [nginxconfig.io](https://github.com/digitalocean/nginxconfig.io)
+- [jeroenpardon's](https://github.com/jeroenpardon) [SUI](https://github.com/jeroenpardon/sui)
+- [maeglin89273's](https://github.com/maeglin89273) [triangulator](https://github.com/maeglin89273/triangulator), a fork of [javierbyte](https://github.com/javierbyte) [triangulator](https://github.com/javierbyte/triangulator)
 
 ![App-Collection]( EXAMPLE_IMAGE )
 
 ---
 
-Creates a Container which runs [Griefed](https://github.com/Griefed) [App-Collection](https://github.com/Griefed/App-Collection), with [lsiobase/alpine](https://hub.docker.com/r/lsiobase/alpine) as the base image, as seen on EXAMPLE_SITE_IF_EXISTS.
+Creates a Container which runs [Griefed's](https://github.com/Griefed) [App-Collection](https://github.com/Griefed/App-Collection), with [lsiobase/nginx](https://hub.docker.com/r/lsiobase/nginx) as the base image, as seen on EXAMPLE_SITE_IF_EXISTS.
 
 The lasiobase/alpine image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
 Using this image allows us to use the same user/group ids in the container as on the host, making file transfers much easier
