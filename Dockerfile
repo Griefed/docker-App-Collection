@@ -10,8 +10,6 @@ ARG DISABLE_ACTIVE_GITHUB_FORKS
 ARG DOMAIN
 ARG PROTOCOL
 
-LABEL maintainer="Griefed <griefed@griefed.de>"
-
 RUN \
         echo "**** install dependencies and build tools and stuff ****" && \
         apk add --no-cache \
