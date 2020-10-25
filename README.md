@@ -37,8 +37,8 @@ Using this image allows us to use the same user/group ids in the container as on
 ```docker-compose.yml
 version: '3.6'
 services:
-  App-Collection:
-    container_name: App-Collection
+  app-Collection:
+    container_name: app-Collection
     image: griefed/App-Collection
     restart: unless-stopped
     volumes:
@@ -105,7 +105,7 @@ I've tested it on a Raspberry Pi 3B.
 version: '3.6'
 services:
   app-collection:
-    container_name: App-Collection
+    container_name: app-collection
     build: ./App-Collection/
     restart: unless-stopped
     volumes:
