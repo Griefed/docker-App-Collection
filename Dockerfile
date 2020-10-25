@@ -13,13 +13,13 @@ ARG PROTOCOL
 RUN \
         echo "**** install dependencies and build tools and stuff ****" && \
         apk add --no-cache \
-						git \
+            git \
             make \
             npm && \
             npm install yarn@1.19.1 -g && \
-				rm -rf \
-						/root/.cache \
-						/tmp/*
+        rm -rf \
+            /root/.cache \
+            /tmp/*
 
 # Copy local files
 COPY root/ /
