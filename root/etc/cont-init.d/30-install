@@ -16,7 +16,7 @@ if [ ! -a /config/www/sui.lock ]; then
 				/tmp/sui/index.html \
 		rm -Rf /tmp/sui/.git
 		cp -Rf \
-				/tmp/sui/.
+				/tmp/sui/. \
 				/config/www/
 		rm -Rf /tmp/sui
 		touch /config/www/sui.lock
@@ -71,7 +71,7 @@ if [ ! -a /config/www/composerize.lock ] && [ "${DISABLE_COMPOSERIZE}" != "true"
 		rm -Rf /config/www/composerize
 		mkdir -p /tmp/composerize
 		mkdir -p /tmp/composerize-website
-		git clone
+		git clone \
 				https://github.com/magicmark/composerize.git \
 						/tmp/composerize
 		cp -r \
