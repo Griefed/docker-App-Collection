@@ -1,0 +1,55 @@
+{
+            "bookmarks" : [
+              {
+                "category": "You",
+                "links": [
+                  {
+                    "name": "Can",
+                    "url": "https://www.example.com"
+                  },
+                  {
+                    "name": "Customize",
+                    "url": "http://www.example.com"
+                  },
+                  {
+                    "name": "This",
+                    "url": "https://www.example.com"
+                  }
+                ]
+              },
+              {
+                "category": "By",
+                "links": [
+                  {
+                    "name": "Editing",
+                    "url": "https://www.example.com"
+                  },
+                  {
+                    "name": "links.json",
+                    "url": "https://www.example.com"
+                  },
+                  {
+                    "name": "In",
+                    "url": "https://www.example.com"
+                  }
+                ]
+              },
+              {
+                "category": "Your",
+                "links": [
+                  {
+                    "name": "Volume",
+                    "url": "https://www.example.com"
+                  },
+                  {
+                    "name": "At",
+                    "url": "https://www.example.com"
+                  },
+                  {
+                    "name": "/config/www/links.json",
+                    "url": "https://www.example.com"
+                }
+            ]
+        }
+    ]
+}

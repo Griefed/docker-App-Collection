@@ -1,0 +1,32 @@
+#!/usr/bin/with-contenv bash
+
+if [ ! -a /config/www/apps.json ]; then
+		cp -f \
+				/defaults/apps.json \
+				/config/www/apps.json
+		sed -i \
+				"s/DOMAIN/${DOMAIN}/g" \
+				apps.json
+fi
+
+
+if [ ! -a /config/www/links.json ]; then
+		cp -f \
+				/defaults/links.json \
+				/config/www/links.json
+fi
+
+
+if [ ! -a /config/www/index.html ]; then
+		cp -f \
+				/defaults/index.html \
+				/config/www/index.html
+		sed -i \
+				"s/PROTOCOL/${PROTOCOL}/g" \
+				index.html
+fi
+
+# Permissions Stuffs
+chown -R \
+		abc:abc \
+				/config/www

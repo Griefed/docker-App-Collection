@@ -1,0 +1,9 @@
+{
+    "apps" : [
+        {"name":"Active GitHub Forks","url":"DOMAIN/active-github-forks","icon":"source-fork"},
+        {"name":"Composerize","url":"DOMAIN/composerize","icon":"cog-transfer"},
+        {"name":"DCC","url":"DOMAIN/dcc","icon":"cog-transfer"},
+        {"name":"NGINXConfig.io","url":"DOMAIN/nginxconfig.io","icon":"arrow-decision-outline"},
+        {"name":"Triangulator","url":"DOMAIN/triangulator/","icon":"triangle"}
+    ]
+}

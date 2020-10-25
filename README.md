@@ -1,43 +1,19 @@
-[![APP_NAME](https://i.griefed.de/images/2020/10/17/template.png)](https://github.com/ CREATOR_NAME / REPO_NAME)
+[![App-Collection](https://i.griefed.de/images/2020/10/17/template.png)](https://github.com/Griefed/docker-App-Collection)
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/griefed/
-DOCKER_REPONAME
-?style=flat-square)](https://hub.docker.com/repository/docker/griefed/
-DOCKER_REPONAME
-)
-[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/griefed/
-DOCKER_REPONAME
-?label=Image%20size&sort=date&style=flat-square)](https://hub.docker.com/repository/docker/griefed/
-DOCKER_REPONAME
-)
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/griefed/
-DOCKER_REPONAME
-?label=Docker%20build&style=flat-square)](https://hub.docker.com/repository/docker/griefed/
-DOCKER_REPONAME
-)
-[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/griefed/
-DOCKERREPONAME
-?label=Docker%20build&style=flat-square)](https://hub.docker.com/repository/docker/griefed/
-DOCKER_REPONAME
-)
-[![GitHub Repo stars](https://img.shields.io/github/stars/Griefed/
-GITHUB_REPONAME
-?label=GitHub%20Stars&style=social)](https://github.com/Griefed/
-GITHUB_REPONAME
-)
-[![GitHub forks](https://img.shields.io/github/forks/Griefed/
-GITHUB_REPONAME
-?label=GitHub%20Forks&style=social)](https://github.com/Griefed/
-GITHUB_REPONAME
-)
+[![Docker Pulls](https://img.shields.io/docker/pulls/griefed/App-Collection?style=flat-square)](https://hub.docker.com/repository/docker/griefed/App-Collection)
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/griefed/App-Collection?label=Image%20size&sort=date&style=flat-square)](https://hub.docker.com/repository/docker/griefed/App-Collection)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/griefed/App-Collection?label=Docker%20build&style=flat-square)](https://hub.docker.com/repository/docker/griefed/App-Collection)
+[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/griefed/App-Collection?label=Docker%20build&style=flat-square)](https://hub.docker.com/repository/docker/griefed/App-Collection)
+[![GitHub Repo stars](https://img.shields.io/github/stars/Griefed/docker-App-Collection?label=GitHub%20Stars&style=social)](https://github.com/Griefed/docker-App-Collection)
+[![GitHub forks](https://img.shields.io/github/forks/Griefed/docker-App-Collection?label=GitHub%20Forks&style=social)](https://github.com/Griefed/docker-App-Collection)
 
-APP_NAME DESCRIPTION
+App-Collection DESCRIPTION
 
-![APP_NAME]( EXAMPLE_IMAGE )
+![App-Collection]( EXAMPLE_IMAGE )
 
 ---
 
-Creates a Container which runs [CREATOR_PROFILE](https://github.com/ CREATOR_PROFILE ) [APP_NAME](https://github.com/d-zone-org/ APP_NAME ), with [lsiobase/alpine](https://hub.docker.com/r/lsiobase/alpine) as the base image, as seen on EXAMPLE_SITE_IF_EXISTS.
+Creates a Container which runs [Griefed](https://github.com/Griefed) [App-Collection](https://github.com/Griefed/App-Collection), with [lsiobase/alpine](https://hub.docker.com/r/lsiobase/alpine) as the base image, as seen on EXAMPLE_SITE_IF_EXISTS.
 
 The lasiobase/alpine image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
 Using this image allows us to use the same user/group ids in the container as on the host, making file transfers much easier
@@ -49,17 +25,23 @@ Using this image allows us to use the same user/group ids in the container as on
 ```docker-compose.yml
 version: '3.6'
 services:
-  APP_NAME:
-    container_name: APP_NAME
-    image: griefed/APP_NAME
+  App-Collection:
+    container_name: App-Collection
+    image: griefed/App-Collection
     restart: unless-stopped
     volumes:
       - ./path/to/config:/config
-      - ./path/to/data:/data
     environment:
       - TZ=Europe/Berlin
       - PUID=1000  # User ID
       - PGID=1000  # Group ID
+      - DOMAIN=www.example.com
+      - PROTOCOL=https
+      - DISABLE_DCC=false
+      - DISABLE_COMPOSERIZE=false
+      - DISABLE_NGINXCONFIG_IO=false
+      - DISABLE_TRIANGULATOR=false
+      - DISABLE_ACTIVE_GITHUB_FORKS=false
     ports:
       - 80:80
 ```
@@ -70,11 +52,22 @@ Configuration | Explanation
 ------------ | -------------
 [Restart policy](https://docs.docker.com/compose/compose-file/#restart) | "no", always, on-failure, unless-stopped
 config volume | Contains config files and logs.
-data volume | Contains your/the containers important data.
 TZ | Timezone
 PUID | for UserID
 PGID | for GroupID
+DOMAIN | The address of the device this container is running on. Can be an IP or sub.domain.tld.
+PROTOCOL | The protocol used to access this container. Either HTTP or HTTPS.
+DISABLE_DCC | Either `true` or `false`.
+DISABLE_COMPOSERIZE | Either `true` or `false`.
+DISABLE_NGINXCONFIG_IO | Either `true` or `false`.
+DISABLE_TRIANGULATOR | Either `true` or `false`.
+DISABLE_ACTIVE_GITHUB_FORKS | Either `true` or `false`.
 ports | The port where the service will be available at.
+
+### DISABLE and .lock files
+
+If `DISABLE_`-variable is set to `false`, App-Collection will not install that app during boot. If set to `true`, App-Collection will install the correpsonding app and place a `appname.lock` file in the `/config/www/` folder.
+If at any point you wish to reinstall one of the apps, make sure the `DISABLE_`-variable is set to `false` and the corresponding `appname.lock` file is deleted.
 
 ## User / Group Identifiers
 
@@ -99,23 +92,30 @@ I've tested it on a Raspberry Pi 3B.
 ```docker-compose.yml
 version: '3.6'
 services:
-  APP_NAME:
-    container_name: APP_NAME
-    build: ./APP_NAME/
+  app-collection:
+    container_name: App-Collection
+    build: ./App-Collection/
     restart: unless-stopped
     volumes:
-      - ./path/to/config/files:/config
+      - ./path/to/config:/config
     environment:
       - TZ=Europe/Berlin
       - PUID=1000  # User ID
       - PGID=1000  # Group ID
+      - DOMAIN=www.example.com
+      - PROTOCOL=https
+      - DISABLE_DCC=false
+      - DISABLE_COMPOSERIZE=false
+      - DISABLE_NGINXCONFIG_IO=false
+      - DISABLE_TRIANGULATOR=false
+      - DISABLE_ACTIVE_GITHUB_FORKS=false
     ports:
       - 80:80
 ```
 
-1. Clone the repository: `git clone REPOSITORY_LINK ./APP_NAME`
+1. Clone the repository: `git clone REPOSITORY_LINK ./App-Collection`
 1. Prepare docker-compose.yml file as seen above
-1. `docker-compose up -d --build APP_NAME`
+1. `docker-compose up -d --build app-collection`
 1. Visit IP.ADDRESS.OF.HOST:80
 1. ???
 1. Profit!
