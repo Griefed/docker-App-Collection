@@ -31,7 +31,7 @@ if [ ! -a /config/www/dcc.lock ] && [ "${DISABLE_DCC}" != "true" ]; then
   git clone -b \
     gh-pages \
       https://github.com/Griefed/dcc-web.git \
-        ./dcc
+        /config/www/dcc
   rm -Rf /config/www/dcc/.git
   touch /config/www/dcc.lock
 else
@@ -45,7 +45,7 @@ if [ ! -a /config/www/nginxconfig.lock ] && [ "${DISABLE_NGINXCONFIG_IO}" != "tr
   git clone -b \
     gh-pages \
       https://github.com/digitalocean/nginxconfig.io.git \
-        ./nginxconfig.io
+        /config/www/nginxconfig.io
   rm -Rf /config/www/nginxconfig.io/.git
   touch /config/www/nginxconfig.lock
 else
@@ -58,7 +58,7 @@ if [ ! -a /config/www/triangulator.lock ] && [ "${DISABLE_TRIANGULATOR}" != "tru
   rm -Rf /config/www/triangulator
   git clone \
     https://github.com/maeglin89273/triangulator.git \
-      ./triangulator
+      /config/www/triangulator
   rm -Rf /config/www/triangulator/.git
   touch /config/www/triangulator.lock
 else
@@ -97,7 +97,7 @@ if [ ! -a /config/www/active_github_forks.lock ] && [ "${DISABLE_ACTIVE_GITHUB_F
   rm -Rf /config/www/active-github-forks
   git clone \
     https://github.com/techgaun/active-forks.git \
-      ./active-github-forks
+      /config/www/active-github-forks
   touch /config/www/active_github_forks.lock
   rm -Rf /config/www/active-github-forks/.git
 else
