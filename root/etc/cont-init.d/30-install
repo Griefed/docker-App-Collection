@@ -82,7 +82,7 @@ if [ ! -a /config/www/composerize.lock ] && [ "${DISABLE_COMPOSERIZE}" != "true"
   yarn add composerize
   make build
   cp -r \
-    /tmp/composerize-website/build. \
+    /tmp/composerize-website/build/. \
     /config/www/composerize/
   rm -Rf /tmp/composerize*
   touch /config/www/composerize.lock
