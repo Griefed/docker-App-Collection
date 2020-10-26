@@ -15,6 +15,7 @@ RUN \
     apk add --no-cache \
       git \
       make \
+      jq \
       npm && \
       npm install yarn@1.19.1 -g && \
     echo "**** Cleanup ****" && \
