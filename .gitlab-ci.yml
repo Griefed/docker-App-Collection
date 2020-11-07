@@ -1,0 +1,39 @@
+stages:
+    - readme
+    - build
+
+image: docker:19.03.8
+
+readme:
+  stage: readme
+  image: alpine:3.12
+  script: 
+    - apk add gettext
+    - source .gitlab/.readme_variables
+    - echo ""
+    - echo ""
+    - echo $LOGO_IMAGE_LINK
+    - echo $GITHUB_REPONAME
+    - echo $GITHUB_USERNAME
+    - echo $DOCKERHUB_REPONAME
+    - echo $DOCKERHUB_TAG
+    - echo $DOCKERHUB_USERNAME
+    - echo $DESCRIPTION
+    - echo $CREATOR_USERNAME
+    - echo $CREATOR_REPONAME
+    - echo $EXAMPLE_SITE_LINK
+    - echo $EXAMPLE_IMAGE_LINK
+    - echo $CONTAINER_PORT
+    - echo ""
+    - echo ""
+    - envsubst < .gitlab/readme_template | less
+    - echo ""
+    - echo ""
+build:
+  stage: build
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull $CI_REGISTRY_IMAGE:latest || true
+    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE:latest
