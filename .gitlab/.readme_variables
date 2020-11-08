@@ -1,4 +1,3 @@
-export LOGO_IMAGE_LINK='https://www.example.com/example.png'
 export GITHUB_REPONAME='docker-template-repo'
 export GITHUB_USERNAME='username'
 export DOCKERHUB_REPONAME='template-repo'
@@ -8,5 +7,4 @@ export DESCRIPTION='This is an example description for the docker-template-repo.
 export CREATOR_USERNAME='Griefed'
 export CREATOR_REPONAME='template'
 export EXAMPLE_SITE_LINK='https://www.example.com'
-export EXAMPLE_IMAGE_LINK='https://www.example.com/screenshot.png'
 export CONTAINER_PORT='1234'

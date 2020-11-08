@@ -1,13 +1,14 @@
 stages:
-    - readme
-    - build
+  - readme
+  - build
+  - publish
 
 image: docker:19.03.8
 
 readme:
   stage: readme
   image: alpine:3.12
-  script: 
+  script:
     - apk add gettext
     - source .gitlab/.readme_variables
     - echo ""
@@ -24,6 +25,8 @@ readme:
     - echo $EXAMPLE_SITE_LINK
     - echo $EXAMPLE_IMAGE_LINK
     - echo $CONTAINER_PORT
+    - echo $CONTAINER_PORT2
+    - echo $BASE_IMAGE
     - echo ""
     - echo ""
     - envsubst < .gitlab/readme_template | less
@@ -34,6 +37,13 @@ build:
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker pull $CI_REGISTRY_IMAGE:latest || true
-    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest .
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:latest
+publish:
+  stage: publish
+  script:
+    - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD $DOCKER_REGISTRY
+    - docker build --tag $DOCKER_USER/$DOCKER_REPO:arm .
+    - docker push $DOCKER_USER/$DOCKER_REPO:arm
+    - docker system prune --all --force
+
