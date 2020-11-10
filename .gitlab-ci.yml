@@ -1,13 +1,20 @@
+# https://github.com/jonashackt/gitlab-ci-stack#configure-gitlab-runner-with-shell-executor
+# https://github.com/jonashackt/gitlab-ci-shell-example
+
 stages:
   - readme
-  - build
+  - test
   - publish
+  - cleanup
 
-image: docker:19.03.8
+before_script:
+  - docker info
+  - ls -ahl && ls -ahl *
 
 readme:
   stage: readme
-  image: alpine:3.12
+  tags:
+    - shell
   script:
     - apk add gettext
     - source .gitlab/.readme_variables
@@ -30,20 +37,32 @@ readme:
     - echo ""
     - echo ""
     - envsubst < .gitlab/readme_template | less
+    - envsubst < .gitlab/readme_template > /home/gitlab-runner/READMEs/$CI_PROJECT_NAME/README.md
     - echo ""
-    - echo ""
-build:
-  stage: build
+
+test:
+  stage: test
+  tags:
+    - shell
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker pull $CI_REGISTRY_IMAGE:latest || true
-    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:latest .
-    - docker push $CI_REGISTRY_IMAGE:latest
-publish:
-  stage: publish
-  script:
-    - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD $DOCKER_REGISTRY
-    - docker build --tag $DOCKER_USER/$DOCKER_REPO:arm .
-    - docker push $DOCKER_USER/$DOCKER_REPO:arm
-    - docker system prune --all --force
+    - docker build --tag $CI_REGISTRY_IMAGE:arm .
+    - docker push $CI_REGISTRY_IMAGE:arm
 
+#publish_1:
+#  stage: publish
+#  tags:
+#    - shell
+#  script:
+#    - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD $DOCKER_REGISTRY
+#    - docker build --tag $DOCKER_USER/$DOCKER_REPO:arm .
+#    - docker push $DOCKER_USER/$DOCKER_REPO:arm
+#    - docker system prune --all --force
+
+cleanup:
+  stage: cleanup
+  tags:
+    - shell
+  script:
+    - rm -rf * .dockerignore .github .gitignore .gitlab
+    - ls -ahl
