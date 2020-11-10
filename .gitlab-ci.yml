@@ -36,6 +36,7 @@ readme:
     - echo ""
     - echo ""
     - envsubst < .gitlab/readme_template | less
+    - mkdir -p /home/gitlab-runner/READMEs/$CI_PROJECT_NAME
     - envsubst < .gitlab/readme_template > /home/gitlab-runner/READMEs/$CI_PROJECT_NAME/README.md
     - echo ""
 
