@@ -16,7 +16,6 @@ readme:
   tags:
     - shell
   script:
-    - apk add gettext
     - source .gitlab/.readme_variables
     - echo ""
     - echo ""
