@@ -1,4 +1,4 @@
-[![$GITHUB_REPONAME](img/$GITHUB_REPONAME_header.png)](https://github.com/$CREATOR_USERNAME/$CREATOR_REPONAME)
+[![$GITHUB_REPONAME](img/$GITHUB_REPONAME_header.png)](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME)
 
 ---
 
@@ -13,13 +13,23 @@ $GITHUB_REPONAME
 
 $DESCRIPTION
 
-[![$CREATOR_REPONAME](img/$GITHUB_REPONAME_screenshot.png)](https://github.com/$CREATOR_USERNAME/$CREATOR_REPONAME)
+Current applications:
+Creator | Repository
+--------|------------
+- [$CREATOR_USERNAME2](https://github.com/$CREATOR_USERNAME2) | [$CREATOR_REPONAME2](https://github.com/$CREATOR_USERNAME2/$CREATOR_REPONAME2), <br/>a fork of [$CREATOR_USERNAME1's](https://github.com/$CREATOR_USERNAME1) [$CREATOR_REPONAME1](https://github.com/$CREATOR_USERNAME1/$CREATOR_REPONAME1)
+- [$CREATOR_USERNAME3](https://github.com/$CREATOR_USERNAME3) | [$CREATOR_REPONAME3](https://github.com/$CREATOR_USERNAME3/$CREATOR_REPONAME3)
+- [$CREATOR_USERNAME4](https://github.com/$CREATOR_USERNAME4) | [$CREATOR_REPONAME4](https://github.com/$CREATOR_USERNAME4/$CREATOR_REPONAME4)
+- [$CREATOR_USERNAME5](https://github.com/$CREATOR_USERNAME5) | [$CREATOR_REPONAME5](https://github.com/$CREATOR_USERNAME5/$CREATOR_REPONAME5)
+- [$CREATOR_USERNAME6](https://github.com/$CREATOR_USERNAME6) | [$CREATOR_REPONAME6](https://github.com/$CREATOR_USERNAME6/$CREATOR_REPONAME6)
+- [$CREATOR_USERNAME7](https://github.com/$CREATOR_USERNAME7) | [$CREATOR_REPONAME7](https://github.com/$CREATOR_USERNAME7/$CREATOR_REPONAME7)
+
+[![$GITHUB_REPONAME](img/$GITHUB_REPONAME_screenshot.png)](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME)
 
 ---
 
-Creates a Container which runs [$CREATOR_USERNAME's](https://github.com/$CREATOR_USERNAME) [$CREATOR_REPONAME](https://github.com/$CREATOR_USERNAME/$CREATOR_REPONAME), with [lsiobase/$BASE_IMAGE](https://hub.docker.com/r/lsiobase/$BASE_IMAGE) as the base image, as seen on $EXAMPLE_SITE_LINK.
+Creates a Container which runs [$GITHUB_USERNAME's](https://github.com/$GITHUB_USERNAME) [$GITHUB_REPONAME](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME), with [lsiobase/$BASE_IMAGE](https://hub.docker.com/r/lsiobase/$BASE_IMAGE) as the base image, as seen on $EXAMPLE_SITE_LINK.
 
-The lasiobase/$BASE_IMAGE image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
+The lsiobase/$BASE_IMAGE image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
 Using this image allows us to use the same user/group ids in the container as on the host, making file transfers much easier
 
 ## Deployment
@@ -31,7 +41,7 @@ version: '3.6'
 services:
   $DOCKERHUB_REPONAME:
     container_name: $DOCKERHUB_REPONAME
-    image: griefed/$DOCKERHUB_REPONAME
+    image: $DOCKERHUB_USERNAME/$DOCKERHUB_REPONAME
     restart: unless-stopped
     volumes:
       - ./path/to/config:/config
@@ -39,6 +49,13 @@ services:
       - TZ=Europe/Berlin
       - PUID=1000  # User ID
       - PGID=1000  # Group ID
+      - DOMAIN=www.example.com
+      - PROTOCOL=https
+      - INSTALL_DCC=false
+      - INSTALL_COMPOSERIZE=false
+      - INSTALL_NGINXCONFIG_IO=false
+      - INSTALL_TRIANGULATOR=false
+      - INSTALL_ACTIVE_GITHUB_FORKS=false
     ports:
       - 80:$CONTAINER_PORT
       - $CONTAINER_PORT2
@@ -48,7 +65,7 @@ services:
 
 To run this container on a Raspberry Pi, use the `arm`-tag. I've tested it on a Raspberry Pi 3B.
 
-`griefed/$DOCKERHUB_REPONAME:arm`
+`$DOCKERHUB_USERNAME/$DOCKERHUB_REPONAME:arm`
 
 ## Configuration
 
@@ -56,11 +73,28 @@ Configuration | Explanation
 ------------ | -------------
 [Restart policy](https://docs.docker.com/compose/compose-file/#restart) | "no", always, on-failure, unless-stopped
 config volume | Contains config files and logs.
-data volume | Contains your/the containers important data.
 TZ | Timezone
 PUID | for UserID
 PGID | for GroupID
+DOMAIN | The address of the device this container is running on. Can be an IP or sub.domain.tld.
+PROTOCOL | The protocol used to access this container. Either HTTP or HTTPS.
+INSTALL_DCC | Either `true` or `false`.
+INSTALL_COMPOSERIZE | Either `true` or `false`.
+INSTALL_NGINXCONFIG_IO | Either `true` or `false`.
+INSTALL_TRIANGULATOR | Either `true` or `false`.
+INSTALL_ACTIVE_GITHUB_FORKS | Either `true` or `false`.
 ports | The port where the service will be available at.
+
+### INSTALL and .lock files
+
+If `INSTALL_`-variable is set to `false`, App-Collection will not install that app during boot. If set to `true`, App-Collection will install the corresponding app and place a `appname.lock` file in the `/config/www/` folder.
+If at any point you wish to reinstall one of the apps, make sure the corresponding `appname.lock` file is deleted.
+If at any point you wish to uninstall one of the apps:
+1. Stop the container with `docker stop $DOCKERHUB_REPONAME`
+1. Set the `INSTALL_`-variable for the app you do not want to install to `false`
+1. Delete the config folder
+1. Run `docker-compose up -d $DOCKERHUB_REPONAME`
+
 
 ## User / Group Identifiers
 
