@@ -25,7 +25,7 @@ else
 fi
 
 # DCC
-if [ ! -a /config/www/dcc.lock ] && [ "${DISABLE_DCC}" != "true" ]; then
+if [ ! -a /config/www/dcc.lock ] && [ "${INSTALL_DCC}" = "true" ]; then
   echo "**** Installing DCC  ****"
   rm -Rf /config/www/dcc
   git clone -b \
@@ -39,7 +39,7 @@ else
 fi
 
 # NGINXConfig.io
-if [ ! -a /config/www/nginxconfig.lock ] && [ "${DISABLE_NGINXCONFIG_IO}" != "true" ]; then
+if [ ! -a /config/www/nginxconfig.lock ] && [ "${INSTALL_NGINXCONFIG_IO}" = "true" ]; then
   echo "**** Installing NGINXConfig.io  ****"
   rm -Rf /config/www/nginxconfig.io
   git clone -b \
@@ -53,7 +53,7 @@ else
 fi
 
 # Triangulator
-if [ ! -a /config/www/triangulator.lock ] && [ "${DISABLE_TRIANGULATOR}" != "true" ]; then
+if [ ! -a /config/www/triangulator.lock ] && [ "${INSTALL_TRIANGULATOR}" = "true" ]; then
   echo "**** Installing Triangulator  ****"
   rm -Rf /config/www/triangulator
   git clone \
@@ -66,11 +66,12 @@ else
 fi
 
 # Composerize
-if [ ! -a /config/www/composerize.lock ] && [ "${DISABLE_COMPOSERIZE}" != "true" ]; then
+if [ ! -a /config/www/composerize.lock ] && [ "${INSTALL_COMPOSERIZE}" = "true" ]; then
   echo "**** Installing Composerize  ****"
   rm -Rf /config/www/composerize
   mkdir -p /tmp/composerize
   mkdir -p /tmp/composerize-website
+  mkdir -p /config/www/composerize
   git clone \
     https://github.com/magicmark/composerize.git \
       /tmp/composerize
@@ -92,7 +93,7 @@ else
 fi
 
 # Active GitHub Forks
-if [ ! -a /config/www/active_github_forks.lock ] && [ "${DISABLE_ACTIVE_GITHUB_FORKS}" != "true" ]; then
+if [ ! -a /config/www/active_github_forks.lock ] && [ "${INSTALL_ACTIVE_GITHUB_FORKS}" = "true" ]; then
   echo "**** Installing Active GitHub Forks  ****"
   rm -Rf /config/www/active-github-forks
   git clone \
