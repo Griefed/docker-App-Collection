@@ -6,9 +6,10 @@ RUN \
     echo "**** Install dependencies, build tools and stuff ****" && \
     apk add --no-cache \
       git \
-      make \
       jq \
-      npm && \
+      make \
+      npm \
+      python3 && \
     echo "**** Cleanup ****" && \
     rm -rf \
       /root/.cache \
