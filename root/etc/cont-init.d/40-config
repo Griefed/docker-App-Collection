@@ -1,5 +1,6 @@
 #!/usr/bin/with-contenv bash
 
+# Default configs
 if [ ! -a /config/www/apps.json ]; then
   cp -f \
     /defaults/apps.json \
@@ -9,22 +10,18 @@ if [ ! -a /config/www/apps.json ]; then
       /config/www/apps.json
 fi
 
-
 if [ ! -a /config/www/links.json ]; then
   cp -f \
     /defaults/links.json \
     /config/www/links.json
 fi
 
-
-if [ ! -a /config/www/index.html ]; then
-  cp -f \
-    /defaults/index.html \
-    /config/www/index.html
-  sed -i \
-    "s/PROTOCOL/${PROTOCOL}/g" \
-      /config/www/index.html
-fi
+# Crontabs
+mkdir -p \
+  /config/crontabs
+if [ ! -a /config/crintabs/root ]; then
+  cp /etc/crontabs/root \
+    /config/crontabs/
 
 # Permissions Stuffs
 chown -R \
