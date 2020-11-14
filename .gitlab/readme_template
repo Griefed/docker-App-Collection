@@ -27,9 +27,9 @@ Creator | Repository
 
 ---
 
-Creates a Container which runs [$GITHUB_USERNAME's](https://github.com/$GITHUB_USERNAME) [$GITHUB_REPONAME](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME), with [lsiobase/$BASE_IMAGE](https://hub.docker.com/r/lsiobase/$BASE_IMAGE) as the base image, as seen on $EXAMPLE_SITE_LINK.
+Creates a Container which runs [$GITHUB_USERNAME's](https://github.com/$GITHUB_USERNAME) [$GITHUB_REPONAME](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME), with [$BASE_IMAGE](https://hub.docker.com/r/lsiobase/$BASE_IMAGE) as the base image, as seen on $EXAMPLE_SITE_LINK.
 
-The $BASE_IMAGE image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
+The [$BASE_IMAGE](https://hub.docker.com/r/$BASE_IMAGE) image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
 Using this image allows us to use the same user/group ids in the container as on the host, making file transfers much easier
 
 ## Deployment
