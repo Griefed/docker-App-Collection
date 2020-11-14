@@ -5,7 +5,6 @@ stages:
   - readme
   - test
   - publish
-  - cleanup
 
 before_script:
   - docker info
@@ -58,11 +57,3 @@ test:
 #    - docker build --network host --tag $DOCKER_USER/$DOCKER_REPO:arm .
 #    - docker push $DOCKER_USER/$DOCKER_REPO:arm
 #    - docker system prune --all --force
-
-cleanup:
-  stage: cleanup
-  tags:
-    - shell
-  script:
-    - rm -rf * .dockerignore .github .gitignore .gitlab
-    - ls -ahl
