@@ -1,4 +1,4 @@
-[![$GITHUB_REPONAME](img/$GITHUB_REPONAME_header.png)](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME)
+[![$GITHUB_REPONAME](img/$GITHUB_REPONAME_HEADER)](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME)
 
 ---
 
@@ -20,19 +20,24 @@ Creator | Repository
 - [$CREATOR_USERNAME3](https://github.com/$CREATOR_USERNAME3) | [$CREATOR_REPONAME3](https://github.com/$CREATOR_USERNAME3/$CREATOR_REPONAME3)
 - [$CREATOR_USERNAME4](https://github.com/$CREATOR_USERNAME4) | [$CREATOR_REPONAME4](https://github.com/$CREATOR_USERNAME4/$CREATOR_REPONAME4)
 - [$CREATOR_USERNAME5](https://github.com/$CREATOR_USERNAME5) | [$CREATOR_REPONAME5](https://github.com/$CREATOR_USERNAME5/$CREATOR_REPONAME5)
-- [$CREATOR_USERNAME6](https://github.com/$CREATOR_USERNAME6) | [$CREATOR_REPONAME6](https://github.com/$CREATOR_USERNAME6/$CREATOR_REPONAME6)
+- [$CREATOR_USERNAME8](https://github.com/$CREATOR_USERNAME8) | [$CREATOR_REPONAME8](https://github.com/$CREATOR_USERNAME8/$CREATOR_REPONAME8), <br/>a fork of [$CREATOR_USERNAME6](https://github.com/$CREATOR_USERNAME6) [$CREATOR_REPONAME6](https://github.com/$CREATOR_USERNAME6/$CREATOR_REPONAME6)
 - [$CREATOR_USERNAME7](https://github.com/$CREATOR_USERNAME7) | [$CREATOR_REPONAME7](https://github.com/$CREATOR_USERNAME7/$CREATOR_REPONAME7)
 
-[![$GITHUB_REPONAME](img/$GITHUB_REPONAME_screenshot.png)](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME)
+[![$GITHUB_REPONAME](img/$GITHUB_REPONAME_SCREENSHOT)](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME)
 
 ---
 
 Creates a Container which runs [$GITHUB_USERNAME's](https://github.com/$GITHUB_USERNAME) [$GITHUB_REPONAME](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME), with [lsiobase/$BASE_IMAGE](https://hub.docker.com/r/lsiobase/$BASE_IMAGE) as the base image, as seen on $EXAMPLE_SITE_LINK.
 
-The lsiobase/$BASE_IMAGE image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
+The $BASE_IMAGE image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
 Using this image allows us to use the same user/group ids in the container as on the host, making file transfers much easier
 
 ## Deployment
+
+Tags | Description
+-----|------------
+`latest` | Using the `latest` tag will pull the latest image for amd64/x86_64 architecture.
+`arm` | Using the `arm`tag will pull the latest image for arm architecture. Use this if you intend on running the container on a Raspberry Pi 3B, for example.
 
 ### Pre-built images
 
@@ -50,7 +55,6 @@ services:
       - PUID=1000  # User ID
       - PGID=1000  # Group ID
       - DOMAIN=www.example.com
-      - PROTOCOL=https
       - INSTALL_DCC=false
       - INSTALL_COMPOSERIZE=false
       - INSTALL_NGINXCONFIG_IO=false
