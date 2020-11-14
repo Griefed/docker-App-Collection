@@ -1,0 +1,1 @@
+*/2 * * * * cd /config/www/ && /usr/bin/python report.py &> /dev/null
