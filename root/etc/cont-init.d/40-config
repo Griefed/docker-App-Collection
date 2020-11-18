@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 # Default configs
-if [ ! -a /config/www/apps.json ]; then
+if [ ! -f /config/www/apps.json ]; then
   cp -f \
     /defaults/apps.json \
     /config/www/apps.json
@@ -13,7 +13,7 @@ if [ ! -a /config/www/apps.json ]; then
       /config/www/apps.json
 fi
 
-if [ ! -a /config/www/links.json ]; then
+if [ ! -f /config/www/links.json ]; then
   cp -f \
     /defaults/links.json \
     /config/www/links.json
@@ -22,9 +22,10 @@ fi
 # Crontabs
 mkdir -p \
   /config/crontabs
-if [ ! -a /config/crintabs/root ]; then
+if [ ! -f /config/crintabs/root ]; then
   cp /etc/crontabs/root \
     /config/crontabs/
+fi
 
 # Permissions Stuffs
 chown -R \
