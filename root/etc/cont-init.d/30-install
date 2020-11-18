@@ -1,23 +1,15 @@
 #!/usr/bin/with-contenv bash
 
 # SUI
-if [ ! -a /config/www/sui.lock ]; then
+if [ ! -f /config/www/sui.lock ]; then
   echo "**** Installing SUI  ****"
-  rm -f /config/www/index.html
+  rm -f /config/www/*
   git clone \
     https://github.com/ThreadR-r/sui-dashboard-status.git \
-      /tmp/sui
+      /config/www
   rm -f \
-    /tmp/sui/docker-compose.yml \
-    /tmp/sui/Dockerfile \
-    /tmp/sui/License.md \
-    /tmp/sui/apps.json \
-    /tmp/sui/links.json \
-    /tmp/sui/index.html
-  rm -Rf /tmp/sui/.git
-  cp -Rf \
-    /tmp/sui/. \
-    /config/www/
+    /config/www/apps.json \
+    /config/www/links.json
   rm -Rf /tmp/sui
   touch /config/www/sui.lock
 else
@@ -25,7 +17,7 @@ else
 fi
 
 # DCC
-if [ ! -a /config/www/dcc.lock ] && [ $INSTALL_DCC = "true" ]; then
+if [ ! -f /config/www/dcc.lock ] && [ $INSTALL_DCC = "true" ]; then
   echo "**** Installing DCC  ****"
   rm -Rf /config/www/dcc
   git clone -b \
@@ -39,7 +31,7 @@ else
 fi
 
 # NGINXConfig.io
-if [ ! -a /config/www/nginxconfig.lock ] && [ $INSTALL_NGINXCONFIG_IO = "true" ]; then
+if [ ! -f /config/www/nginxconfig.lock ] && [ $INSTALL_NGINXCONFIG_IO = "true" ]; then
   echo "**** Installing NGINXConfig.io  ****"
   rm -Rf /config/www/nginxconfig.io
   git clone -b \
@@ -53,7 +45,7 @@ else
 fi
 
 # Triangulator
-if [ ! -a /config/www/triangulator.lock ] && [ $INSTALL_TRIANGULATOR = "true" ]; then
+if [ ! -f /config/www/triangulator.lock ] && [ $INSTALL_TRIANGULATOR = "true" ]; then
   echo "**** Installing Triangulator  ****"
   rm -Rf /config/www/triangulator
   git clone \
@@ -66,7 +58,7 @@ else
 fi
 
 # Composerize
-if [ ! -a /config/www/composerize.lock ] && [ $INSTALL_COMPOSERIZE = "true" ]; then
+if [ ! -f /config/www/composerize.lock ] && [ $INSTALL_COMPOSERIZE = "true" ]; then
   echo "**** Installing Composerize  ****"
   rm -Rf /config/www/composerize
   mkdir -p /tmp/composerize
@@ -79,6 +71,9 @@ if [ ! -a /config/www/composerize.lock ] && [ $INSTALL_COMPOSERIZE = "true" ]; t
     /tmp/composerize/packages/composerize-website/. \
     /tmp/composerize-website
   cd /tmp/composerize-website
+  sed -i \
+    "s,https://www.composerize.com,$PROTOCOL://$DOMAIN/composerize,g" \
+      /tmp/composerize-website/package.json
   npm install yarn@1.19.1 -g
   yarn add composerize
   make build
@@ -86,7 +81,7 @@ if [ ! -a /config/www/composerize.lock ] && [ $INSTALL_COMPOSERIZE = "true" ]; t
     /tmp/composerize-website/build/. \
     /config/www/composerize/
   rm -Rf \
-    /tmp/composerize
+    /tmp/composerize \
     /tmp/composerize-website
   touch /config/www/composerize.lock
   cd /
@@ -95,11 +90,11 @@ else
 fi
 
 # Active GitHub Forks
-if [ ! -a /config/www/active_github_forks.lock ] && [ $INSTALL_ACTIVE_GITHUB_FORKS = "true" ]; then
+if [ ! -f /config/www/active_github_forks.lock ] && [ $INSTALL_ACTIVE_GITHUB_FORKS = "true" ]; then
   echo "**** Installing Active GitHub Forks  ****"
   rm -Rf /config/www/active-github-forks
   git clone \
-    https://github.com/techgaun/active-forks.git \
+    https://github.com/lukaszmn/active-forks.git \
       /config/www/active-github-forks
   touch /config/www/active_github_forks.lock
   rm -Rf /config/www/active-github-forks/.git
