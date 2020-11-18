@@ -34,8 +34,6 @@ if [ ! -a /config/www/dcc.lock ] && [ $INSTALL_DCC = "true" ]; then
         /config/www/dcc
   rm -Rf /config/www/dcc/.git
   touch /config/www/dcc.lock
-elif [ $ ]; then
-
 else
   echo "**** DCC already installed, skipping  ****"
 fi
