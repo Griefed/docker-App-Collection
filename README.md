@@ -27,9 +27,9 @@ Creator | Repository
 
 ---
 
-Creates a Container which runs [Griefed's](https://github.com/Griefed) [docker-App-Collection](https://github.com/Griefed/docker-App-Collection), with [lsiobase/lsiobase/nginx](https://hub.docker.com/r/lsiobase/lsiobase/nginx) as the base image, as seen on https://www.example.com.
+Creates a Container which runs [Griefed's](https://github.com/Griefed) [docker-App-Collection](https://github.com/Griefed/docker-App-Collection), with [lsiobase/nginx](https://hub.docker.com/r/lsiobase/lsiobase/nginx) as the base image, as seen on https://www.example.com.
 
-The lsiobase/nginx image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
+The [lsiobase/nginx](https://hub.docker.com/r/lsiobase/nginx) image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
 Using this image allows us to use the same user/group ids in the container as on the host, making file transfers much easier
 
 ## Deployment

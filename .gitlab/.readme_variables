@@ -1,6 +1,6 @@
 export GITHUB_REPONAME='docker-App-Collection'
 export GITHUB_USERNAME='Griefed'
-export GITHUB_REPONAME_HEADER='docker-App-Collection_header.png'
+export GITHUB_REPONAME_HEADER='https://i.griefed.de/images/2020/11/18/docker-App-Collection_header.png'
 export GITHUB_REPONAME_SCREENSHOT='docker-App-Collection_screenshot.png'
 export DOCKERHUB_REPONAME='app-collection'
 export DOCKERHUB_TAG='latest'
