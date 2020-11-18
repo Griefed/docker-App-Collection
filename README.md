@@ -1,4 +1,4 @@
-[![docker-App-Collection](img/docker-App-Collection_header.png)](https://github.com/Griefed/docker-App-Collection)
+[![docker-App-Collection](https://i.griefed.de/images/2020/11/18/docker-App-Collection_header.png)](https://github.com/Griefed/docker-App-Collection)
 
 ---
 
@@ -23,7 +23,7 @@ Creator | Repository
 - [ThreadR-r](https://github.com/ThreadR-r) | [sui-dashboard-status](https://github.com/ThreadR-r/sui-dashboard-status), <br/>a fork of [jeroenpardon](https://github.com/jeroenpardon) [sui](https://github.com/jeroenpardon/sui)
 - [maeglin89273](https://github.com/maeglin89273) | [triangulator](https://github.com/maeglin89273/triangulator)
 
-[![docker-App-Collection](img/docker-App-Collection_screenshot.png)](https://github.com/Griefed/docker-App-Collection)
+[![docker-App-Collection](docker-App-Collection_screenshot.png)](https://github.com/Griefed/docker-App-Collection)
 
 ---
 
