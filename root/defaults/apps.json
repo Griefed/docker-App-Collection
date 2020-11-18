@@ -5,7 +5,7 @@
             "hostname":"DOMAIN",
             "port": 80,
             "name": "Active GitHub Forks",
-            "href": "DOMAIN/active-github-forks",
+            "href": "PROTOCOL://DOMAIN/active-github-forks",
             "icon": "source-fork",
             "status": "red"
         },
@@ -13,7 +13,7 @@
             "hostname": "DOMAIN",
             "port": 80,
             "name": "Composerize",
-            "href": "DOMAIN/composerize",
+            "href": "PROTOCOL://DOMAIN/composerize",
             "icon": "cog-transfer",
             "status": "red"
         },
@@ -21,7 +21,7 @@
             "hostname": "DOMAIN",
             "port": 80,
             "name": "Docker Compose Converter",
-            "href": "DOMAIN/dcc",
+            "href": "PROTOCOL://DOMAIN/dcc",
             "icon": "cog-transfer",
             "status": "red"
         },
@@ -29,7 +29,7 @@
             "hostname": "DOMAIN",
             "port": 80,
             "name": "NGINXConfig.io",
-            "href": "DOMAIN/nginxconfig.io",
+            "href": "PROTOCOL://DOMAIN/nginxconfig.io",
             "icon": "arrow-decision-outline",
             "status": "red"
         },
@@ -37,7 +37,7 @@
             "hostname": "DOMAIN",
             "port": 80,
             "name": "Triangulator",
-            "href": "DOMAIN/triangulator/",
+            "href": "PROTOCOL://DOMAIN/triangulator/",
             "icon": "triangle",
             "status": "red"
         }
