@@ -24,7 +24,6 @@ if [ ! -f /config/www/dcc.lock ] && [ $INSTALL_DCC = "true" ]; then
     gh-pages \
       https://github.com/Griefed/dcc-web.git \
         /config/www/dcc
-  rm -Rf /config/www/dcc/.git
   touch /config/www/dcc.lock
 else
   echo "**** DCC already installed, skipping  ****"
@@ -38,7 +37,6 @@ if [ ! -f /config/www/nginxconfig.lock ] && [ $INSTALL_NGINXCONFIG_IO = "true" ]
     gh-pages \
       https://github.com/digitalocean/nginxconfig.io.git \
         /config/www/nginxconfig.io
-  rm -Rf /config/www/nginxconfig.io/.git
   touch /config/www/nginxconfig.lock
 else
   echo "**** NGINXConfig already installed, skipping  ****"
@@ -51,7 +49,6 @@ if [ ! -f /config/www/triangulator.lock ] && [ $INSTALL_TRIANGULATOR = "true" ];
   git clone \
     https://github.com/maeglin89273/triangulator.git \
       /config/www/triangulator
-  rm -Rf /config/www/triangulator/.git
   touch /config/www/triangulator.lock
 else
   echo "**** Triangulator already installed, skipping  ****"
@@ -95,9 +92,8 @@ if [ ! -f /config/www/active_github_forks.lock ] && [ $INSTALL_ACTIVE_GITHUB_FOR
   rm -Rf /config/www/active-github-forks
   git clone \
     https://github.com/lukaszmn/active-forks.git \
-      /config/www/active-github-forks
+      /config/www/forks
   touch /config/www/active_github_forks.lock
-  rm -Rf /config/www/active-github-forks/.git
 else
   echo "**** Active GitHub Forks already installed, skipping  ****"
 fi
