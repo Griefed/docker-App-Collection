@@ -21,7 +21,7 @@ Creator | Repository
 [magicmark](https://github.com/magicmark) | [composerize](https://github.com/magicmark/composerize)
 [bucherfa](https://github.com/bucherfa) | [dcc-web](https://github.com/bucherfa/dcc-web)
 [digitalocean](https://github.com/digitalocean) | [nginxconfig.io](https://github.com/digitalocean/nginxconfig.io)
-[ThreadR-r](https://github.com/ThreadR-r) | [sui-dashboard-status](https://github.com/ThreadR-r/sui-dashboard-status), <br/>a fork of <br/>[jeroenpardon](https://github.com/jeroenpardon) [sui](https://github.com/jeroenpardon/sui)
+[ThreadR-r](https://github.com/ThreadR-r) | [sui-dashboard-status](https://github.com/ThreadR-r/sui-dashboard-status), <br/>a fork of <br/>[jeroenpardon's](https://github.com/jeroenpardon) [sui](https://github.com/jeroenpardon/sui)
 [maeglin89273](https://github.com/maeglin89273) | [triangulator](https://github.com/maeglin89273/triangulator)
 
 [![docker-App-Collection](docker-App-Collection_screenshot.png)](https://github.com/Griefed/docker-App-Collection)
