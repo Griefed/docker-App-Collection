@@ -6,7 +6,10 @@ if [ ! -a /config/www/apps.json ]; then
     /defaults/apps.json \
     /config/www/apps.json
   sed -i \
-    "s/DOMAIN/${DOMAIN}/g" \
+    "s/DOMAIN/$DOMAIN/g" \
+      /config/www/apps.json
+  sed -i \
+    "s/PROTOCOL/$PROTOCOL/g" \
       /config/www/apps.json
 fi
 
