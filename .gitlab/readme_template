@@ -56,11 +56,11 @@ services:
       - PUID=1000  # User ID
       - PGID=1000  # Group ID
       - DOMAIN=www.example.com
-      - INSTALL_DCC=false
-      - INSTALL_COMPOSERIZE=false
-      - INSTALL_NGINXCONFIG_IO=false
-      - INSTALL_TRIANGULATOR=false
-      - INSTALL_ACTIVE_GITHUB_FORKS=false
+      - INSTALL_DCC=true
+      - INSTALL_COMPOSERIZE=true
+      - INSTALL_NGINXCONFIG_IO=true
+      - INSTALL_TRIANGULATOR=true
+      - INSTALL_ACTIVE_GITHUB_FORKS=true
     ports:
       - 80:$CONTAINER_PORT
       - $CONTAINER_PORT2
