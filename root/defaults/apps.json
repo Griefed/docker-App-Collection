@@ -5,7 +5,7 @@
             "hostname":"DOMAIN",
             "port": 80,
             "name": "Active GitHub Forks",
-            "href": "PROTOCOL://DOMAIN/active-github-forks",
+            "href": "PROTOCOL://DOMAIN/forks",
             "icon": "source-fork",
             "status": "red"
         },
