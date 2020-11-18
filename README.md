@@ -14,6 +14,7 @@ docker-App-Collection
 App-Collection is, as the name implies, a collection of various apps which I have previously released in separate Docker Containers and am now moving/collecing into one single container.
 
 Current applications:
+
 Creator | Repository
 --------|------------
 - [lukaszmn](https://github.com/lukaszmn) | [active-forks](https://github.com/lukaszmn/active-forks), <br/>a fork of [techgaun's](https://github.com/techgaun) [active-forks](https://github.com/techgaun/active-forks)

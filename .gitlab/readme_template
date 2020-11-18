@@ -14,6 +14,7 @@ $GITHUB_REPONAME
 $DESCRIPTION
 
 Current applications:
+
 Creator | Repository
 --------|------------
 - [$CREATOR_USERNAME2](https://github.com/$CREATOR_USERNAME2) | [$CREATOR_REPONAME2](https://github.com/$CREATOR_USERNAME2/$CREATOR_REPONAME2), <br/>a fork of [$CREATOR_USERNAME1's](https://github.com/$CREATOR_USERNAME1) [$CREATOR_REPONAME1](https://github.com/$CREATOR_USERNAME1/$CREATOR_REPONAME1)
