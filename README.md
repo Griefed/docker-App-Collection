@@ -56,6 +56,7 @@ services:
       - PUID=1000  # User ID
       - PGID=1000  # Group ID
       - DOMAIN=www.example.com
+      - PROTOCOL=https
       - INSTALL_DCC=false
       - INSTALL_COMPOSERIZE=false
       - INSTALL_NGINXCONFIG_IO=false
