@@ -96,6 +96,64 @@ INSTALL_TRIANGULATOR | Either `true` or `false`.
 INSTALL_ACTIVE_GITHUB_FORKS | Either `true` or `false`.
 ports | The port where the service will be available at.
 
+## SUI configuration
+
+### Apps
+Add your apps by editing apps.json:
+
+    {
+	    "apps" : [
+		    {"name":"Name of app 1","hostname":"sub1.example.com","port":80,"href":"https://sub1.example.com" ,"icon":"icon-name"},
+		    {"name":"Name of app 2","hostname":"sub2.example.com""port":8080,"href":"https://sub1.example.com" ,"icon":"icon-name"}
+	    ]
+    }
+
+Please note:
+
+ - No `,` at the end of the last app's line
+ - Find the names  of icons to use at [Material Design Icons](https://materialdesignicons.com/)
+
+### Bookmarks
+Add your bookmarks by editing links.json:
+
+```
+{
+   "bookmarks":[
+      {
+         "category":"Category1",
+         "links":[
+            {
+               "name":"Link1",
+               "url":"http://example.com"
+            },
+            {
+               "name":"Link2",
+               "url":"http://example.com"
+            }
+         ]
+      },
+      {
+         "category":"Category2",
+         "links":[
+            {
+               "name":"Link1",
+               "url":"http://example.com"
+            },
+            {
+               "name":"Link2",
+               "url":"http://example.com"
+            }
+         ]
+      }
+   ]
+}
+```
+Add names for the categories you wish to define and add the bookmarks for each category.
+
+Please note:
+
+ - No `,` at the end of the last bookmark in a category and at the end of the last category
+
 ### INSTALL and .lock files
 
 If `INSTALL_`-variable is set to `false`, App-Collection will not install that app during boot. If set to `true`, App-Collection will install the corresponding app and place a `appname.lock` file in the `/config/www/` folder.
