@@ -11,7 +11,7 @@
 
 docker-App-Collection
 
-App-Collection is, as the name implies, a collection of various apps which I have previously released in separate Docker Containers and am now moving/collecing into one single container.
+App-Collection is, as the name implies, a collection of various apps which I have previously released in separate Docker Containers and am now moving/collecing into one single container.<br/><br/>Please keep in mind that the first start of the container may take a while.<br/>That is due to the apps and how they are installed on first run as they are not part of the image itself.<br/>Especially Composerize can take a couple of minutes to finish.
 
 Current applications:
 
@@ -24,7 +24,12 @@ Creator | Repository
 [ThreadR-r](https://github.com/ThreadR-r) | [sui-dashboard-status](https://github.com/ThreadR-r/sui-dashboard-status), <br/>a fork of <br/>[jeroenpardon's](https://github.com/jeroenpardon) [sui](https://github.com/jeroenpardon/sui)
 [maeglin89273](https://github.com/maeglin89273) | [triangulator](https://github.com/maeglin89273/triangulator)
 
-[![docker-App-Collection](docker-App-Collection_screenshot.png)](https://github.com/Griefed/docker-App-Collection)
+
+App-Collection | Screenshots
+------|------
+[![active-forks](https://i.griefed.de/images/2020/11/19/docker-App-Collection_forks_screenshot.png)](https://github.com/lukaszmn/active-forks) | [![composerize](https://i.griefed.de/images/2020/11/19/docker-App-Collection_composerizescreenshot.png)](https://github.com/magicmark/composerize)
+[![dcc-web](https://i.griefed.de/images/2020/11/19/docker-App-Collection_dcc_screenshot.png)](https://github.com/bucherfa/dcc-web) | [![nginxconfig.io](https://i.griefed.de/images/2020/11/19/docker-App-Collection_nginxconfig.io_screenshot.png)](https://github.com/digitalocean/nginxconfig.io)
+[![sui-dashboard-status](https://i.griefed.de/images/2020/11/19/docker-App-Collection_screenshot.png)](https://github.com/ThreadR-r/sui-dashboard-status) | [![triangulator](https://i.griefed.de/images/2020/11/19/docker-App-Collection_triangulator_screenshot.png)](https://github.com/maeglin89273/triangulator)
 
 ---
 
@@ -57,11 +62,11 @@ services:
       - PGID=1000  # Group ID
       - DOMAIN=www.example.com
       - PROTOCOL=https
-      - INSTALL_DCC=false
-      - INSTALL_COMPOSERIZE=false
-      - INSTALL_NGINXCONFIG_IO=false
-      - INSTALL_TRIANGULATOR=false
-      - INSTALL_ACTIVE_GITHUB_FORKS=false
+      - INSTALL_DCC=true
+      - INSTALL_COMPOSERIZE=true
+      - INSTALL_NGINXCONFIG_IO=true
+      - INSTALL_TRIANGULATOR=true
+      - INSTALL_ACTIVE_GITHUB_FORKS=true
     ports:
       - 80:80
       - 443:443
@@ -145,3 +150,4 @@ services:
 1. Visit IP.ADDRESS.OF.HOST:8080
 1. ???
 1. Profit!
+
