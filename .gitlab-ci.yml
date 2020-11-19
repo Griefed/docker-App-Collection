@@ -48,12 +48,11 @@ test:
     - docker build --network host --tag $CI_REGISTRY_IMAGE:arm .
     - docker push $CI_REGISTRY_IMAGE:arm
 
-#publish_1:
-#  stage: publish
-#  tags:
-#    - shell
-#  script:
-#    - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD $DOCKER_REGISTRY
-#    - docker build --network host --tag $DOCKER_USER/$DOCKER_REPO:arm .
-#    - docker push $DOCKER_USER/$DOCKER_REPO:arm
-#    - docker system prune --all --force
+publish:
+  stage: publish
+  tags:
+    - shell
+  script:
+    - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD $DOCKER_REGISTRY
+    - docker build --network host --tag $DOCKER_USER/$DOCKER_REPO:arm .
+    - docker push $DOCKER_USER/$DOCKER_REPO:arm
