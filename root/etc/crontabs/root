@@ -1,3 +1,0 @@
-# Run report.py to check status of website/services in apps.json every five minutes
-# min   hour    day     month   weekday command
-*/5     *       *       *       *       cd /config/www/ && /usr/bin/python report.py &> /dev/null

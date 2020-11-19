@@ -22,10 +22,10 @@ fi
 # Crontabs
 mkdir -p \
   /config/crontabs
-if [ ! -f /config/crintabs/root ]; then
-  cp /etc/crontabs/root \
-    /config/crontabs/
-fi
+# set cronjob
+[[ ! -f /config/crontabs/root ]] && \
+	cp /defaults/root /config/crontabs/root
+cp /config/crontabs/root /etc/crontabs/root
 
 # Permissions Stuffs
 chown -R \
