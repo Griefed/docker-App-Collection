@@ -6,4 +6,4 @@
 0       3       *       *       6       run-parts /etc/periodic/weekly
 0       5       1       *       *       run-parts /etc/periodic/monthly
 # SUI Dashboard status cronjob
-*/5     *       *       *       *       cd /config/www/ && /usr/bin/python report.py &> /dev/null
+*/5     *       *       *       *       /usr/bin/python3 /config/www/report.py &> /dev/null
