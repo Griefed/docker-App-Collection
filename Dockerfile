@@ -2,6 +2,8 @@ FROM lsiobase/nginx:3.12
 
 LABEL maintainer="Griefed <griefed@griefed.de>"
 
+ARG TGEN_VERSION="1.2.5"
+
 RUN \
     echo "**** Install dependencies, build tools and stuff ****" && \
     apk add --no-cache \
@@ -13,7 +15,8 @@ RUN \
     echo "**** Cleanup ****" && \
     rm -rf \
       /root/.cache \
-      /tmp/*
+      /tmp/* && \
+    echo $TGEN_VERSION > /version.txt
 
 # Copy local files
 COPY root/ /

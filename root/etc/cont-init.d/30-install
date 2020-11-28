@@ -98,6 +98,23 @@ else
   echo "**** Active GitHub Forks already installed, skipping  ****"
 fi
 
+# tgen
+TGEN_VERSION=$(cat /version.txt)
+if [ ! -f /config/www/tgen.lock ] && [ $INSTALL_TGEN = "true" ]; then
+  echo "**** Installing tgen  ****"
+	curl -o /tmp/tgen.zip  -L \
+		"https://github.com/schalkt/tgen/archive/$TGEN_VERSION.zip"
+	cd /tmp
+	unzip -qq tgen.zip
+	mv tgen-*/demo config/www/tgen
+	mv tgen-*/dist config/www/dist
+  rm -Rf \
+    /tmp/tgen*
+  touch /config/www/tgen.lock
+else
+  echo "**** tgen already installed, skipping  ****"
+fi
+
 # Permission Stuffs
 chown -R \
   abc:abc \

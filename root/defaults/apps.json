@@ -36,6 +36,14 @@
         {
             "hostname": "DOMAIN",
             "port": 80,
+            "name": "tgen",
+            "href": "PROTOCOL://DOMAIN/tgen",
+            "icon": "mdi-texture-box",
+            "status": "red"
+        },
+        {
+            "hostname": "DOMAIN",
+            "port": 80,
             "name": "Triangulator",
             "href": "PROTOCOL://DOMAIN/triangulator/",
             "icon": "triangle",

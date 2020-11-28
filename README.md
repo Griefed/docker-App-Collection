@@ -23,6 +23,7 @@ Creator | Repository
 [digitalocean](https://github.com/digitalocean) | [nginxconfig.io](https://github.com/digitalocean/nginxconfig.io)
 [ThreadR-r](https://github.com/ThreadR-r) | [sui-dashboard-status](https://github.com/ThreadR-r/sui-dashboard-status), <br/>a fork of <br/>[jeroenpardon's](https://github.com/jeroenpardon) [sui](https://github.com/jeroenpardon/sui)
 [maeglin89273](https://github.com/maeglin89273) | [triangulator](https://github.com/maeglin89273/triangulator)
+[schalkt](https://github.com/schalkt) | [tgen](https://github.com/schalkt/tgen)
 
 
 App-Collection | Screenshots
@@ -30,10 +31,11 @@ App-Collection | Screenshots
 [![active-forks](https://i.griefed.de/images/2020/11/19/docker-App-Collection_forks_screenshot.png)](https://github.com/lukaszmn/active-forks) | [![composerize](https://i.griefed.de/images/2020/11/19/docker-App-Collection_composerizescreenshot.png)](https://github.com/magicmark/composerize)
 [![dcc-web](https://i.griefed.de/images/2020/11/19/docker-App-Collection_dcc_screenshot.png)](https://github.com/bucherfa/dcc-web) | [![nginxconfig.io](https://i.griefed.de/images/2020/11/19/docker-App-Collection_nginxconfig.io_screenshot.png)](https://github.com/digitalocean/nginxconfig.io)
 [![sui-dashboard-status](https://i.griefed.de/images/2020/11/19/docker-App-Collection_screenshot.png)](https://github.com/ThreadR-r/sui-dashboard-status) | [![triangulator](https://i.griefed.de/images/2020/11/19/docker-App-Collection_triangulator_screenshot.png)](https://github.com/maeglin89273/triangulator)
+[![tgen](https://i.griefed.de/images/2020/11/28/docker-App-Collection_tgen_screenshot.png)](https://github.com/schalkt/tgen) | Hi.
 
 ---
 
-Creates a Container which runs [Griefed's](https://github.com/Griefed) [docker-App-Collection](https://github.com/Griefed/docker-App-Collection), with [lsiobase/nginx](https://hub.docker.com/r/lsiobase/lsiobase/nginx) as the base image, as seen on https://www.example.com.
+Creates a Container which runs [Griefed's](https://github.com/Griefed) [docker-App-Collection](https://github.com/Griefed/docker-App-Collection), with [lsiobase/nginx](https://hub.docker.com/r/lsiobase/lsiobase/nginx) as the base image, similar to https://apps.griefed.de.
 
 The [lsiobase/nginx](https://hub.docker.com/r/lsiobase/nginx) image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
 Using this image allows us to use the same user/group ids in the container as on the host, making file transfers much easier
@@ -65,6 +67,7 @@ services:
       - INSTALL_DCC=true
       - INSTALL_COMPOSERIZE=true
       - INSTALL_NGINXCONFIG_IO=true
+      - INSTALL_TGEN=true
       - INSTALL_TRIANGULATOR=true
       - INSTALL_ACTIVE_GITHUB_FORKS=true
     ports:
@@ -92,6 +95,7 @@ PROTOCOL | The protocol used to access this container. Either HTTP or HTTPS.
 INSTALL_DCC | Either `true` or `false`.
 INSTALL_COMPOSERIZE | Either `true` or `false`.
 INSTALL_NGINXCONFIG_IO | Either `true` or `false`.
+INSTALL_TGEN | Either `true` or `false`.
 INSTALL_TRIANGULATOR | Either `true` or `false`.
 INSTALL_ACTIVE_GITHUB_FORKS | Either `true` or `false`.
 ports | The port where the service will be available at.
@@ -197,6 +201,14 @@ services:
       - TZ=Europe/Berlin
       - PUID=1000  # User ID
       - PGID=1000  # Group ID
+      - DOMAIN=www.example.com
+      - PROTOCOL=https
+      - INSTALL_DCC=true
+      - INSTALL_COMPOSERIZE=true
+      - INSTALL_NGINXCONFIG_IO=true
+      - INSTALL_TGEN=true
+      - INSTALL_TRIANGULATOR=true
+      - INSTALL_ACTIVE_GITHUB_FORKS=true
     ports:
       - 8080:80
       - 443:443

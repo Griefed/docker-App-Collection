@@ -23,16 +23,18 @@ Creator | Repository
 [$CREATOR_USERNAME5](https://github.com/$CREATOR_USERNAME5) | [$CREATOR_REPONAME5](https://github.com/$CREATOR_USERNAME5/$CREATOR_REPONAME5)
 [$CREATOR_USERNAME8](https://github.com/$CREATOR_USERNAME8) | [$CREATOR_REPONAME8](https://github.com/$CREATOR_USERNAME8/$CREATOR_REPONAME8), <br/>a fork of <br/>[$CREATOR_USERNAME6's](https://github.com/$CREATOR_USERNAME6) [$CREATOR_REPONAME6](https://github.com/$CREATOR_USERNAME6/$CREATOR_REPONAME6)
 [$CREATOR_USERNAME7](https://github.com/$CREATOR_USERNAME7) | [$CREATOR_REPONAME7](https://github.com/$CREATOR_USERNAME7/$CREATOR_REPONAME7)
+[$CREATOR_USERNAME10](https://github.com/$CREATOR_USERNAME10) | [$CREATOR_REPONAME10](https://github.com/$CREATOR_USERNAME10/$CREATOR_REPONAME10)
 
 App-Collection | Screenshots
 ------|------
 [![$CREATOR_REPONAME2]($GITHUB_REPONAME_SCREENSHOT4)](https://github.com/$CREATOR_USERNAME2/$CREATOR_REPONAME2) | [![$CREATOR_REPONAME3]($GITHUB_REPONAME_SCREENSHOT6)](https://github.com/$CREATOR_USERNAME3/$CREATOR_REPONAME3)
 [![$CREATOR_REPONAME4]($GITHUB_REPONAME_SCREENSHOT5)](https://github.com/$CREATOR_USERNAME4/$CREATOR_REPONAME4) | [![$CREATOR_REPONAME5]($GITHUB_REPONAME_SCREENSHOT3)](https://github.com/$CREATOR_USERNAME5/$CREATOR_REPONAME5)
 [![$CREATOR_REPONAME8]($GITHUB_REPONAME_SCREENSHOT1)](https://github.com/$CREATOR_USERNAME8/$CREATOR_REPONAME8) | [![$CREATOR_REPONAME7]($GITHUB_REPONAME_SCREENSHOT2)](https://github.com/$CREATOR_USERNAME7/$CREATOR_REPONAME7)
+[![$CREATOR_REPONAME10]($GITHUB_REPONAME_SCREENSHOT7)](https://github.com/$CREATOR_USERNAME10/$CREATOR_REPONAME10) | Hi.
 
 ---
 
-Creates a Container which runs [$GITHUB_USERNAME's](https://github.com/$GITHUB_USERNAME) [$GITHUB_REPONAME](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME), with [$BASE_IMAGE](https://hub.docker.com/r/lsiobase/$BASE_IMAGE) as the base image, as seen on $EXAMPLE_SITE_LINK.
+Creates a Container which runs [$GITHUB_USERNAME's](https://github.com/$GITHUB_USERNAME) [$GITHUB_REPONAME](https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME), with [$BASE_IMAGE](https://hub.docker.com/r/lsiobase/$BASE_IMAGE) as the base image, similar to $EXAMPLE_SITE_LINK.
 
 The [$BASE_IMAGE](https://hub.docker.com/r/$BASE_IMAGE) image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
 Using this image allows us to use the same user/group ids in the container as on the host, making file transfers much easier
@@ -64,6 +66,7 @@ services:
       - INSTALL_DCC=true
       - INSTALL_COMPOSERIZE=true
       - INSTALL_NGINXCONFIG_IO=true
+      - INSTALL_TGEN=true
       - INSTALL_TRIANGULATOR=true
       - INSTALL_ACTIVE_GITHUB_FORKS=true
     ports:
@@ -91,6 +94,7 @@ PROTOCOL | The protocol used to access this container. Either HTTP or HTTPS.
 INSTALL_DCC | Either `true` or `false`.
 INSTALL_COMPOSERIZE | Either `true` or `false`.
 INSTALL_NGINXCONFIG_IO | Either `true` or `false`.
+INSTALL_TGEN | Either `true` or `false`.
 INSTALL_TRIANGULATOR | Either `true` or `false`.
 INSTALL_ACTIVE_GITHUB_FORKS | Either `true` or `false`.
 ports | The port where the service will be available at.
@@ -196,6 +200,14 @@ services:
       - TZ=Europe/Berlin
       - PUID=1000  # User ID
       - PGID=1000  # Group ID
+      - DOMAIN=www.example.com
+      - PROTOCOL=https
+      - INSTALL_DCC=true
+      - INSTALL_COMPOSERIZE=true
+      - INSTALL_NGINXCONFIG_IO=true
+      - INSTALL_TGEN=true
+      - INSTALL_TRIANGULATOR=true
+      - INSTALL_ACTIVE_GITHUB_FORKS=true
     ports:
       - 8080:$CONTAINER_PORT
       - $CONTAINER_PORT2
