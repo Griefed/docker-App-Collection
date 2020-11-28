@@ -38,7 +38,7 @@
             "port": 80,
             "name": "tgen",
             "href": "PROTOCOL://DOMAIN/tgen",
-            "icon": "mdi-texture-box",
+            "icon": "texture",
             "status": "red"
         },
         {
