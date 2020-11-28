@@ -7,11 +7,13 @@ ARG TGEN_VERSION="1.2.5"
 RUN \
     echo "**** Install dependencies, build tools and stuff ****" && \
     apk add --no-cache \
+      curl \
       git \
       jq \
       make \
       npm \
-      python3 && \
+      python3 \
+      unzip && \
     echo "**** Cleanup ****" && \
     rm -rf \
       /root/.cache \
