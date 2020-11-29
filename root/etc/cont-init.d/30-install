@@ -103,7 +103,7 @@ TGEN_VERSION=$(cat /version.txt)
 if [ ! -f /config/www/tgen.lock ] && [ $INSTALL_TGEN = "true" ]; then
   echo "**** Installing tgen  ****"
 	curl -o /tmp/tgen.zip  -L \
-		"https://github.com/schalkt/tgen/archive/$TGEN_VERSION.zip"
+		"https://github.com/schalkt/tgen/archive/v$TGEN_VERSION.zip"
 	cd /tmp
 	unzip -qq tgen.zip
 	mv tgen-*/demo config/www/tgen
