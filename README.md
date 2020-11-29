@@ -49,32 +49,56 @@ Tags | Description
 
 ## Pre-built images
 
+using docker-compose:
+
 ```docker-compose.yml
-version: '3.6'
+version: "2"
 services:
   app-collection:
+    image: griefed/app-collection:latest
     container_name: app-collection
-    image: griefed/app-collection
     restart: unless-stopped
-    volumes:
-      - ./path/to/config:/config
     environment:
-      - TZ=Europe/Berlin
-      - PUID=1000  # User ID
-      - PGID=1000  # Group ID
-      - DOMAIN=www.example.com
-      - PROTOCOL=https
-      - INSTALL_DCC=true
-      - INSTALL_COMPOSERIZE=true
-      - INSTALL_NGINXCONFIG_IO=true
-      - INSTALL_TGEN=true
-      - INSTALL_TRIANGULATOR=true
-      - INSTALL_ACTIVE_GITHUB_FORKS=true
+      - TZ=Europe/Berlin # Timezone
+      - PUID=1000 # User ID
+      - PROTOCOL=https # The protocol used to access this container. Either HTTP or HTTPS.
+      - PGID=1000 # Group ID
+      - INSTALL_TRIANGULATOR=true # Whether to install triangulator. Either true or false.
+      - INSTALL_TGEN=true # Whether to install tgen. Either true or false.
+      - INSTALL_NGINXCONFIG_IO=true # Whether to install NGINXConfig.io. Either true or false.
+      - INSTALL_DCC=true # Whether to install dcc. Either true or false.
+      - INSTALL_COMPOSERIZE=true # Whether to install composerize. Either true or false.
+      - INSTALL_ACTIVE_GITHUB_FORKS=true # Whether to install Active GitHub Forks. Either true or false.
+      - DOMAIN=www.example.com # The address of the device this container is running on. Can be an IP or sub.domain.tld.
+    volumes:
+      - /host/path/to/config:/config # Contains all application data and base-image config files
     ports:
-      - 80:80
-      - 443:443
+      - 443:443 # https
+      - 80:80 # http
 ```
 
+Using CLI:
+
+```bash
+docker create \
+  --name=app-collection \
+  -e TZ=Europe/Berlin \
+  -e PUID=1000 \
+  -e PROTOCOL=https \
+  -e PGID=1000 \
+  -e INSTALL_TRIANGULATOR=true \
+  -e INSTALL_TGEN=true \
+  -e INSTALL_NGINXCONFIG_IO=true \
+  -e INSTALL_DCC=true \
+  -e INSTALL_COMPOSERIZE=true \
+  -e INSTALL_ACTIVE_GITHUB_FORKS=true \
+  -e DOMAIN=www.example.com \
+  -v /host/path/to/config:/config \
+  -p 443:443 \
+  -p 80:80 \
+  --restart unless-stopped \
+  griefed/app-collection:latest
+```
 ## Raspberry Pi
 
 To run this container on a Raspberry Pi, use the `arm`-tag. I've tested it on a Raspberry Pi 3B.
@@ -99,64 +123,6 @@ INSTALL_TGEN | Either `true` or `false`.
 INSTALL_TRIANGULATOR | Either `true` or `false`.
 INSTALL_ACTIVE_GITHUB_FORKS | Either `true` or `false`.
 ports | The port where the service will be available at.
-
-## SUI configuration
-
-### Apps
-Add your apps by editing apps.json:
-
-    {
-	    "apps" : [
-		    {"name":"Name of app 1","hostname":"sub1.example.com","port":80,"href":"https://sub1.example.com" ,"icon":"icon-name"},
-		    {"name":"Name of app 2","hostname":"sub2.example.com""port":8080,"href":"https://sub1.example.com" ,"icon":"icon-name"}
-	    ]
-    }
-
-Please note:
-
- - No `,` at the end of the last app's line
- - Find the names  of icons to use at [Material Design Icons](https://materialdesignicons.com/)
-
-### Bookmarks
-Add your bookmarks by editing links.json:
-
-```
-{
-   "bookmarks":[
-      {
-         "category":"Category1",
-         "links":[
-            {
-               "name":"Link1",
-               "url":"http://example.com"
-            },
-            {
-               "name":"Link2",
-               "url":"http://example.com"
-            }
-         ]
-      },
-      {
-         "category":"Category2",
-         "links":[
-            {
-               "name":"Link1",
-               "url":"http://example.com"
-            },
-            {
-               "name":"Link2",
-               "url":"http://example.com"
-            }
-         ]
-      }
-   ]
-}
-```
-Add names for the categories you wish to define and add the bookmarks for each category.
-
-Please note:
-
- - No `,` at the end of the last bookmark in a category and at the end of the last category
 
 ## INSTALL and .lock files
 
@@ -192,26 +158,26 @@ docker-compose.yml
 version: '3.6'
 services:
   app-collection:
-    container_name: app-collection
     build: ./docker-App-Collection/
+    container_name: app-collection
     restart: unless-stopped
-    volumes:
-      - ./path/to/config/files:/config
     environment:
-      - TZ=Europe/Berlin
-      - PUID=1000  # User ID
-      - PGID=1000  # Group ID
-      - DOMAIN=www.example.com
-      - PROTOCOL=https
-      - INSTALL_DCC=true
-      - INSTALL_COMPOSERIZE=true
-      - INSTALL_NGINXCONFIG_IO=true
-      - INSTALL_TGEN=true
-      - INSTALL_TRIANGULATOR=true
-      - INSTALL_ACTIVE_GITHUB_FORKS=true
+      - TZ=Europe/Berlin # Timezone
+      - PUID=1000 # User ID
+      - PROTOCOL=https # The protocol used to access this container. Either HTTP or HTTPS.
+      - PGID=1000 # Group ID
+      - INSTALL_TRIANGULATOR=true # Whether to install triangulator. Either true or false.
+      - INSTALL_TGEN=true # Whether to install tgen. Either true or false.
+      - INSTALL_NGINXCONFIG_IO=true # Whether to install NGINXConfig.io. Either true or false.
+      - INSTALL_DCC=true # Whether to install dcc. Either true or false.
+      - INSTALL_COMPOSERIZE=true # Whether to install composerize. Either true or false.
+      - INSTALL_ACTIVE_GITHUB_FORKS=true # Whether to install Active GitHub Forks. Either true or false.
+      - DOMAIN=www.example.com # The address of the device this container is running on. Can be an IP or sub.domain.tld.
+    volumes:
+      - /host/path/to/config:/config # Contains all application data and base-image config files
     ports:
-      - 8080:80
-      - 443:443
+      - 443:443 # https
+      - 80:80 # http
 ```
 
 1. Clone the repository: `git clone https://github.com/Griefed/docker-App-Collection.git ./docker-App-Collection`
@@ -221,3 +187,257 @@ services:
 1. ???
 1. Profit!
 
+# App Information
+
+## Active GitHub Forks
+
+* works after providing a **personal GitHub token**. It is used only to increase the limits to query to API. The token is stored in Local Storage only, not sent anywhere except for the GitHub API.
+* include the **original repository** in the list, marked in bold
+* after expanding **Options**, it is possible to increase the **maximum amount of forks** to retrieve and to utilize some kind of caching
+* retrieve **commits of each fork** and show the differences
+* click on box in the **Diff** column to see the commits
+
+**Optimizations**
+
+Because this version retrieves commits from every fork which is slow and uses your quota (it resets every hour, don't worry), I added two options for caching results:
+* **Same size** - if a fork has the same size as a fork that has already been read, it is assumed to be the same and contain the same commits.
+* **Same Push Date** - same but looks at the Last Push date.
+If both are selected, both conditions have to be satisfied at the same time.
+If the condition is satisfied, commits for the second fork are not retrieved but assumed to be the same as in the first fork.
+
+## dcc Web
+
+I've changed the index.html and .css under [/gh-pages](https://github.com/Griefed/dcc-web/tree/gh-pages) in order for the website to be deployed with regular apache's, for example a httpd:alpine docker container. 
+
+## NGINXConfig
+
+A lot of features with corresponding configuration directives. You can deep dive into the NGINX documentation right now OR you can use this tool to check how NGINX works, observe how your inputs are affecting the output, generate the best config for your specific use-case (and in parallel you can still use the docs).
+
+## SUI Dashboard Status
+
+**Changing color themes**
+ - Click the options button on the left bottom
+
+**Apps**
+
+Add your apps by editing apps.json:
+
+    {
+	    "apps" : [
+		    {"name":"Name of app 1","hostname":"sub1.example.com","port":80,"href":"https://sub1.example.com" ,"icon":"icon-name"},
+		    {"name":"Name of app 2","hostname":"sub2.example.com""port":8080,"href":"https://sub1.example.com" ,"icon":"icon-name"}
+	    ]
+    }
+
+Please note:
+
+ - No `,` at the end of the last app's line
+ - Find the names  of icons to use at [Material Design Icons](https://materialdesignicons.com/)
+
+**Bookmarks**
+
+Add your bookmarks by editing links.json:
+
+```
+{  
+   "bookmarks":[  
+      {  
+         "category":"Category1",
+         "links":[  
+            {  
+               "name":"Link1",
+               "url":"http://example.com"
+            },
+            {  
+               "name":"Link2",
+               "url":"http://example.com"
+            }
+         ]
+      },
+      {  
+         "category":"Category2",
+         "links":[  
+            {  
+               "name":"Link1",
+               "url":"http://example.com"
+            },
+            {  
+               "name":"Link2",
+               "url":"http://example.com"
+            }
+         ]
+      }
+   ]
+}
+```
+Add names for the categories you wish to define and add the bookmarks for each category.
+
+Please note:
+
+ - No `,` at the end of the last bookmark in a category and at the end of the last category
+
+
+**Color themes**
+
+These can be added or customized in the themer.js file. When changing the name of a theme or adding one, make sure to edit this section in index.html accordingly:
+
+```
+    <section  class="themes">
+```
+
+## tgen
+
+**Quick usage and examples**
+
+```javascript
+    // initialize the generator
+    var generator = tgen.init(256, 256);
+
+
+    // --- texture 1 --------------------------------------------------------------
+
+    var canvas1 = generator
+            .do('waves')
+            .toCanvas();
+
+    // set img src, and width height
+    $('#img1').attr('src', canvas1.toDataURL("image/png")).css({width: canvas1.width, height: canvas1.height});
+
+
+    // --- texture 2 --------------------------------------------------------------
+
+    var canvas2 = generator
+            .do('fill')
+            .do('waves', {blend: 'difference'})
+            .do('waves', {blend: 'difference'})
+            .do('contrast', {"adjust": 50})
+            .toCanvas();
+
+    // set img src, and width height
+    $('#img2').attr('src', canvas2.toDataURL("image/png")).css({width: canvas2.width, height: canvas2.height});
+
+
+    // --- texture 3 --------------------------------------------------------------
+
+    var texture3 = generator
+            .clear() // remove previous layers
+            .do('fill')
+            .do('clouds', {blend: 'difference'})
+            .do('spheres', {blend: 'lineardodge', 'dynamic': true})
+            .do('vibrance', {"adjust": 50});
+
+    var canvas3 = texture3.toCanvas();
+
+    // set img src, and width height
+    $('#img3').attr('src', canvas3.toDataURL("image/png")).css({width: canvas3.width, height: canvas3.height});
+
+
+    // --- texture 4 --------------------------------------------------------------
+
+    // get the generated params of texture3
+    var params = texture3.params();
+
+    // get number of layers
+    var layers = params.items.length;
+
+    // change the color of clouds
+    params.items[layers - 3][2].rgba = [255, 50, 10, 0.85];
+
+    // change the blending method
+    params.items[layers - 2][2].blend = 'overlay';
+
+    // generate new texture with modified params of texture3
+    var canvas4 = generator.render(params).toCanvas();
+
+    // set img src, and width height
+    $('#img4').attr('src', canvas4.toDataURL("image/png")).css({width: canvas4.width, height: canvas4.height});
+
+
+    // --- texture 5 --------------------------------------------------------------
+
+    var params = {
+        "width":  256, // texture width in pixel
+        "height": 256, // texture height in pixel
+        "debug": true, // render info to console log, default value: false
+        "items":  [
+            [0, "lines2", { // layer number and effect name
+                "blend": "opacity", // layer blend mode
+                "count": 21, // square count
+                "size":  [5, 15], // random size between 5-15%
+                "rgba":  [
+                    255, // fixed red channel
+                    [128, 192], // random green channel between 128 and 192
+                    [200, 255], // random blue channel between 200 and 255
+                    [0.2, 0.6] // random opacity between 0.2 and 0.6
+                ]
+            }],
+            [1, "spheres", { // second layer
+                "blend":   "lighten",
+                "origin":  "random",
+                "dynamic": true, //
+                "count":   21,
+                "size":    [20, 100],
+                "rgba":    [200, 200, 200, 0.7]
+            }],
+            [2, "copy", 0], // copy layer 0 to layer 1
+            [2, "merge", { // merge layer 1 in to 2
+                "layer": 1,
+                "blend": "lighten"
+            }],
+            [2, "brightness", {"adjust": -10, "legacy": true}], // set brightness
+            [2, "vibrance", {"adjust": 50}], // set vibrance
+            [2, "contrast", {"adjust": 50}] // set contrast
+        ]
+    };
+
+    // generate
+    var canvas5 = generator.render(params).toCanvas();
+
+    // set img src, and width height
+    $('#img5').attr('src', canvas5.toDataURL("image/png")).css({width: canvas5.width, height: canvas5.height});
+
+
+    // --- texture 6 --------------------------------------------------------------
+
+    // change layer of texture 5 merge blend method
+    params.items[3] = [2, "merge", {
+        "layer": 1,
+        "blend": "difference"
+    }];
+
+    // render and add new effects
+    var canvas6 = generator
+            .render(params)
+            .do('sharpen')
+            .do('noise')
+            .toCanvas();
+
+    // set img src, and width height
+    $('#img6').attr('src', canvas6.toDataURL("image/png")).css({width: canvas6.width, height: canvas6.height});
+
+
+    // --- available effects -------------------------------------------------------
+
+    // dump all effects and default config parameters
+    for (key in tgen.defaults) {
+
+        var params = tgen.defaults[key];
+        var item = $('<span><h2>' + key + '</h2>' + JSON.stringify(params) + '</span>');
+        $('.defaults').append(item);
+
+    }
+```
+
+**Available other options**
+
+* map (cool effect)
+* merge (copy layer with blend)
+* copy (copy layer without blend)
+* history (store last x generated texture params in localStorage)
+
+**Available events**
+
+* beforeRender
+* afterRender
+* beforeEffect
+* afterEffect
