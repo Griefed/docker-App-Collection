@@ -9,7 +9,7 @@
 [![GitHub Repo stars](https://img.shields.io/github/stars/Griefed/$GITHUB_REPONAME?label=GitHub%20Stars&style=social)](https://github.com/Griefed/$GITHUB_REPONAME)
 [![GitHub forks](https://img.shields.io/github/forks/Griefed/$GITHUB_REPONAME?label=GitHub%20Forks&style=social)](https://github.com/Griefed/$GITHUB_REPONAME)
 
-$GITHUB_REPONAME
+# $GITHUB_REPONAME
 
 $DESCRIPTION
 
@@ -39,14 +39,14 @@ Creates a Container which runs [$GITHUB_USERNAME's](https://github.com/$GITHUB_U
 The [$BASE_IMAGE](https://hub.docker.com/r/$BASE_IMAGE) image is a custom base image built with [Alpine linux](https://alpinelinux.org/) and [S6 overlay](https://github.com/just-containers/s6-overlay).
 Using this image allows us to use the same user/group ids in the container as on the host, making file transfers much easier
 
-## Deployment
+# Deployment
 
 Tags | Description
 -----|------------
 `latest` | Using the `latest` tag will pull the latest image for amd64/x86_64 architecture.
 `arm` | Using the `arm`tag will pull the latest image for arm architecture. Use this if you intend on running the container on a Raspberry Pi 3B, for example.
 
-### Pre-built images
+## Pre-built images
 
 ```docker-compose.yml
 version: '3.6'
@@ -80,7 +80,7 @@ To run this container on a Raspberry Pi, use the `arm`-tag. I've tested it on a 
 
 `$DOCKERHUB_USERNAME/$DOCKERHUB_REPONAME:arm`
 
-## Configuration
+# Configuration
 
 Configuration | Explanation
 ------------ | -------------
@@ -157,7 +157,7 @@ Please note:
 
  - No `,` at the end of the last bookmark in a category and at the end of the last category
 
-### INSTALL and .lock files
+## INSTALL and .lock files
 
 If `INSTALL_`-variable is set to `false`, App-Collection will not install that app during boot. If set to `true`, App-Collection will install the corresponding app and place a `appname.lock` file in the `/config/www/` folder.
 If at any point you wish to reinstall one of the apps, make sure the corresponding `appname.lock` file is deleted.
@@ -181,11 +181,11 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
     uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
 ```
 
-### Building the image yourself
+# Building the image yourself
 
 Use the [Dockerfile](https://github.com/Griefed/$GITHUB_REPONAME/Dockerfile) to build the image yourself, in case you want to make any changes to it
 
-#### docker-compose.yml
+docker-compose.yml:
 
 ```docker-compose.yml
 version: '3.6'
