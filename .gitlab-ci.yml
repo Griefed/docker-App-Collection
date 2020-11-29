@@ -5,7 +5,7 @@ stages:
   - readme
   - test
   - publish
-#  - release
+  - release
 
 before_script:
   - docker info
