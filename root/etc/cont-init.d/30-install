@@ -106,8 +106,8 @@ if [ ! -f /config/www/tgen.lock ] && [ $INSTALL_TGEN = "true" ]; then
 		"https://github.com/schalkt/tgen/archive/v$TGEN_VERSION.zip"
 	cd /tmp
 	unzip -qq tgen.zip
-	mv tgen-*/demo config/www/tgen
-	mv tgen-*/dist config/www/dist
+	mv tgen-*/demo /config/www/tgen
+	mv tgen-*/dist /config/www/dist
   rm -Rf \
     /tmp/tgen*
   touch /config/www/tgen.lock
