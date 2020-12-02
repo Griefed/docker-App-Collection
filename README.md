@@ -2,12 +2,12 @@
 
 ---
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/griefed/app-collection?style=flat-square)](https://hub.docker.com/repository/docker/griefed/app-collection)
-[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/griefed/app-collection?label=Image%20size&sort=date&style=flat-square)](https://hub.docker.com/repository/docker/griefed/app-collection)
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/griefed/app-collection?label=Docker%20build&style=flat-square)](https://hub.docker.com/repository/docker/griefed/app-collection)
-[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/griefed/app-collection?label=Docker%20build&style=flat-square)](https://hub.docker.com/repository/docker/griefed/app-collection)
-[![GitHub Repo stars](https://img.shields.io/github/stars/Griefed/docker-App-Collection?label=GitHub%20Stars&style=social)](https://github.com/Griefed/docker-App-Collection)
-[![GitHub forks](https://img.shields.io/github/forks/Griefed/docker-App-Collection?label=GitHub%20Forks&style=social)](https://github.com/Griefed/docker-App-Collection)
+[![Docker Pulls](https://img.shields.io/docker/pulls/griefed/app-collection?style=for-the-badge)](https://hub.docker.com/repository/docker/griefed/app-collection)
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/griefed/app-collection?label=Image%20size&sort=date&style=for-the-badge)](https://hub.docker.com/repository/docker/griefed/app-collection)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/griefed/app-collection?label=Docker%20build&style=for-the-badge)](https://hub.docker.com/repository/docker/griefed/app-collection)
+[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/griefed/app-collection?label=Docker%20build&style=for-the-badge)](https://hub.docker.com/repository/docker/griefed/app-collection)
+[![GitHub Repo stars](https://img.shields.io/github/stars/Griefed/docker-App-Collection?label=GitHub%20Stars&style=for-the-badge)](https://github.com/Griefed/docker-App-Collection)
+[![GitHub forks](https://img.shields.io/github/forks/Griefed/docker-App-Collection?label=GitHub%20Forks&style=for-the-badge)](https://github.com/Griefed/docker-App-Collection)
 
 # docker-App-Collection
 
@@ -131,7 +131,8 @@ If at any point you wish to reinstall one of the apps, make sure the correspondi
 If at any point you wish to uninstall one of the apps:
 1. Stop the container with `docker stop app-collection`
 1. Set the `INSTALL_`-variable for the app you do not want to install to `false`
-1. Delete the config folder
+1. Edit your apps.json and remove entries no longer available.
+    1. Optionally, if you didn't edit your apps.json, delete the folder you specified in `volumes:` so App-Collection will generate a fresh one.
 1. Run `docker-compose up -d app-collection`
 
 
@@ -450,3 +451,5 @@ These can be added or customized in the themer.js file. When changing the name o
 * afterRender
 * beforeEffect
 * afterEffect
+=======
+>>>>>>> 12e5a2d6b00280f07b1844690006cf12e791db3b

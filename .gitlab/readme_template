@@ -164,7 +164,8 @@ If at any point you wish to reinstall one of the apps, make sure the correspondi
 If at any point you wish to uninstall one of the apps:
 1. Stop the container with `docker stop $DOCKERHUB_REPONAME`
 1. Set the `INSTALL_`-variable for the app you do not want to install to `false`
-1. Delete the config folder
+1. Edit your apps.json and remove entries no longer available.
+    1. Optionally, if you didn't edit your apps.json, delete the folder you specified in `volumes:` so App-Collection will generate a fresh one.
 1. Run `docker-compose up -d $DOCKERHUB_REPONAME`
 
 

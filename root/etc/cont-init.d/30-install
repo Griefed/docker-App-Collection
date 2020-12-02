@@ -25,6 +25,10 @@ if [ ! -f /config/www/dcc.lock ] && [ $INSTALL_DCC = "true" ]; then
       https://github.com/Griefed/dcc-web.git \
         /config/www/dcc
   touch /config/www/dcc.lock
+elif [ $INSTALL_DCC = "false" ] && [ -f /config/www/dcc.lock ]; then
+  echo "**** Uninstalling DCC  ****"
+  rm -Rf /config/www/dcc
+  rm -f /config/www/dcc.lock
 else
   echo "**** DCC already installed, skipping  ****"
 fi
@@ -38,6 +42,10 @@ if [ ! -f /config/www/nginxconfig.lock ] && [ $INSTALL_NGINXCONFIG_IO = "true" ]
       https://github.com/digitalocean/nginxconfig.io.git \
         /config/www/nginxconfig.io
   touch /config/www/nginxconfig.lock
+elif [ $INSTALL_NGINXCONFIG_IO = "false" ] && [ -f /config/www/nginxconfig.lock ]; then
+  echo "**** Uninstalling NGINXConfig.io ****"
+  rm -Rf /config/www/nginxconfig.io
+  rm -f /config/www/nginxconfig.lock
 else
   echo "**** NGINXConfig already installed, skipping  ****"
 fi
@@ -50,6 +58,10 @@ if [ ! -f /config/www/triangulator.lock ] && [ $INSTALL_TRIANGULATOR = "true" ];
     https://github.com/maeglin89273/triangulator.git \
       /config/www/triangulator
   touch /config/www/triangulator.lock
+elif [ $INSTALL_TRIANGULATOR = "false" ] && [ -f /config/www/triangulator.lock ]; then
+  echo "**** Uninstalling Triangulator ****"
+  rm -Rf /config/www/triangulator
+  rm -f /config/www/triangulator.lock
 else
   echo "**** Triangulator already installed, skipping  ****"
 fi
@@ -82,6 +94,10 @@ if [ ! -f /config/www/composerize.lock ] && [ $INSTALL_COMPOSERIZE = "true" ]; t
     /tmp/composerize-website
   touch /config/www/composerize.lock
   cd /
+elif [ $INSTALL_COMPOSERIZE = "false" ] && [ -f /config/www/composerize.lock ]; then
+  echo "**** Uninstalling Composerize ****"
+  rm -Rf /config/www/composerize
+  rm -f /config/www/composerize.lock
 else
   echo "**** Composerize already installed, skipping  ****"
 fi
@@ -94,6 +110,10 @@ if [ ! -f /config/www/active_github_forks.lock ] && [ $INSTALL_ACTIVE_GITHUB_FOR
     https://github.com/lukaszmn/active-forks.git \
       /config/www/forks
   touch /config/www/active_github_forks.lock
+elif [ $INSTALL_ACTIVE_GITHUB_FORKS = "false" ] && [ -f /config/www/active_github_forks.lock ]; then
+  echo "**** Uninstalling Active GitHub Forks ****"
+  rm -Rf /config/www/forks
+  rm -f /config/www/active_github_forks.lock
 else
   echo "**** Active GitHub Forks already installed, skipping  ****"
 fi
@@ -111,6 +131,11 @@ if [ ! -f /config/www/tgen.lock ] && [ $INSTALL_TGEN = "true" ]; then
   rm -Rf \
     /tmp/tgen*
   touch /config/www/tgen.lock
+elif [ $INSTALL_TGEN = "false" ] && [ -f /config/www/tgen.lock ]; then
+  echo "**** Uninstalling tgen ****"
+  rm -Rf /config/www/tgen
+  rm -Rf /config/www/dist
+  rm -f /config/www/tgen.lock
 else
   echo "**** tgen already installed, skipping  ****"
 fi
