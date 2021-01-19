@@ -2,7 +2,7 @@ FROM lsiobase/nginx:3.12
 
 LABEL maintainer="Griefed <griefed@griefed.de>"
 
-ARG TGEN_VERSION="1.2.5"
+ARG TGEN_VERSION="1.3.5"
 
 RUN \
     echo "**** Install dependencies, build tools and stuff ****" && \
