@@ -44,6 +44,22 @@
         {
             "hostname": "DOMAIN",
             "port": 80,
+            "name": "php-noise",
+            "href": "PROTOCOL://DOMAIN/noise/",
+            "icon": "checkerboard",
+            "status": "red"
+        },
+        {
+            "hostname": "DOMAIN",
+            "port": 80,
+            "name": "php-noise randomizer",
+            "href": "PROTOCOL://DOMAIN/noise/random",
+            "icon": "checkerboard-remove",
+            "status": "red"
+        },
+        {
+            "hostname": "DOMAIN",
+            "port": 80,
             "name": "Triangulator",
             "href": "PROTOCOL://DOMAIN/triangulator/",
             "icon": "triangle",
