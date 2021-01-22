@@ -12,6 +12,7 @@ RUN \
       jq \
       make \
       npm \
+      php-gd \
       python3 \
       unzip && \
     echo "**** Cleanup ****" && \
