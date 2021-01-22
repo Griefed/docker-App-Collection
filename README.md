@@ -76,7 +76,7 @@ services:
       - INSTALL_DCC=true # Whether to install dcc. Either true or false.
       - INSTALL_COMPOSERIZE=true # Whether to install composerize. Either true or false.
       - INSTALL_ACTIVE_GITHUB_FORKS=true # Whether to install Active GitHub Forks. Either true or false.
-      - INSTALL_NOISE=true # Whether to install php-noise. Either true or false.
+      - INSTALL_PHP_NOISE=true # Whether to install php-noise. Either true or false.
       - DOMAIN=www.example.com # The address of the device this container is running on. Can be an IP or sub.domain.tld.
     volumes:
       - /host/path/to/config:/config # Contains all application data and base-image config files
@@ -100,7 +100,7 @@ docker create \
   -e INSTALL_DCC=true \
   -e INSTALL_COMPOSERIZE=true \
   -e INSTALL_ACTIVE_GITHUB_FORKS=true \
-  -e INSTALL_NOISE=true \
+  -e INSTALL_PHP_NOISE=true \
   -e DOMAIN=www.example.com \
   -v /host/path/to/config:/config \
   -p 443:443 \
@@ -131,7 +131,7 @@ INSTALL_NGINXCONFIG_IO | Either `true` or `false`.
 INSTALL_TGEN | Either `true` or `false`.
 INSTALL_TRIANGULATOR | Either `true` or `false`.
 INSTALL_ACTIVE_GITHUB_FORKS | Either `true` or `false`.
-INSTALL_NOISE | Either `true` or `false`.
+INSTALL_PHP_NOISE | Either `true` or `false`.
 ports | The port where the service will be available at.
 
 ## INSTALL and .lock files
@@ -183,7 +183,7 @@ services:
       - INSTALL_DCC=true # Whether to install dcc. Either true or false.
       - INSTALL_COMPOSERIZE=true # Whether to install composerize. Either true or false.
       - INSTALL_ACTIVE_GITHUB_FORKS=true # Whether to install Active GitHub Forks. Either true or false.
-      - INSTALL_NOISE=true # Whether to install php-noise. Either true or false.
+      - INSTALL_PHP_NOISE=true # Whether to install php-noise. Either true or false.
       - DOMAIN=www.example.com # The address of the device this container is running on. Can be an IP or sub.domain.tld.
     volumes:
       - /host/path/to/config:/config # Contains all application data and base-image config files
