@@ -23,21 +23,22 @@ Current applications:
 
 Creator | Repository
 --------|------------
-[lukaszmn](https://github.com/lukaszmn) | [active-forks](https://github.com/lukaszmn/active-forks), <br/>a fork of <br/>[techgaun's](https://github.com/techgaun) [active-forks](https://github.com/techgaun/active-forks)
+[lukaszmn](https://github.com/lukaszmn) | [active-forks](https://github.com/lukaszmn/active-forks), a fork of [techgaun's](https://github.com/techgaun) [active-forks](https://github.com/techgaun/active-forks)
 [magicmark](https://github.com/magicmark) | [composerize](https://github.com/magicmark/composerize)
-[Griefed](https://github.com/Griefed) | [dcc-web](https://github.com/Griefed/dcc-web), <br/>a fork of <br/>[bucherfa's](https://github.com/bucherfa) [dcc-web](https://github.com/bucherfa/dcc-web)
+[bucherfa](https://github.com/bucherfa) | [Griefed's](https://github.com/Griefed) [dcc-web](https://github.com/Griefed/dcc-web), a fork of [bucherfa's](https://github.com/bucherfa) [dcc-web](https://github.com/bucherfa/dcc-web)
 [digitalocean](https://github.com/digitalocean) | [nginxconfig.io](https://github.com/digitalocean/nginxconfig.io)
-[ThreadR-r](https://github.com/ThreadR-r) | [sui-dashboard-status](https://github.com/ThreadR-r/sui-dashboard-status), <br/>a fork of <br/>[jeroenpardon's](https://github.com/jeroenpardon) [sui](https://github.com/jeroenpardon/sui)
+[ThreadR-r](https://github.com/ThreadR-r) | [sui-dashboard-status](https://github.com/ThreadR-r/sui-dashboard-status), a fork of [jeroenpardon's](https://github.com/jeroenpardon) [sui](https://github.com/jeroenpardon/sui)
 [maeglin89273](https://github.com/maeglin89273) | [triangulator](https://github.com/maeglin89273/triangulator)
 [schalkt](https://github.com/schalkt) | [tgen](https://github.com/schalkt/tgen)
-
+[RundesBalli](https://github.com/RundesBalli) | [Griefed's](https://github.com/Griefed) [php-noise.com](https://github.com/Griefed/php-noise.com), a fork of [RundesBalli's](https://github.com/RundesBalli) [php-noise.com](https://github.com/RundesBalli/php-noise.com)
+[RundesBalli](https://github.com/RundesBalli) | [php-noise](https://github.com/RundesBalli/php-noise)
 
 App-Collection | Screenshots
 ------|------
 [![active-forks](https://i.griefed.de/images/2020/11/19/docker-App-Collection_forks_screenshot.png)](https://github.com/lukaszmn/active-forks) | [![composerize](https://i.griefed.de/images/2020/11/19/docker-App-Collection_composerizescreenshot.png)](https://github.com/magicmark/composerize)
 [![dcc-web](https://i.griefed.de/images/2020/11/19/docker-App-Collection_dcc_screenshot.png)](https://github.com/bucherfa/dcc-web) | [![nginxconfig.io](https://i.griefed.de/images/2020/11/19/docker-App-Collection_nginxconfig.io_screenshot.png)](https://github.com/digitalocean/nginxconfig.io)
 [![sui-dashboard-status](https://i.griefed.de/images/2020/11/19/docker-App-Collection_screenshot.png)](https://github.com/ThreadR-r/sui-dashboard-status) | [![triangulator](https://i.griefed.de/images/2020/11/19/docker-App-Collection_triangulator_screenshot.png)](https://github.com/maeglin89273/triangulator)
-[![tgen](https://i.griefed.de/images/2020/11/28/docker-App-Collection_tgen_screenshot.png)](https://github.com/schalkt/tgen) | Hi.
+[![tgen](https://i.griefed.de/images/2020/11/28/docker-App-Collection_tgen_screenshot.png)](https://github.com/schalkt/tgen) | [![php-noise](https://i.griefed.de/images/2021/01/22/docker-App-Collection_noise_screenshot.png)](https://github.com/RundesBalli/php-noise.com)
 
 ---
 
@@ -75,6 +76,7 @@ services:
       - INSTALL_DCC=true # Whether to install dcc. Either true or false.
       - INSTALL_COMPOSERIZE=true # Whether to install composerize. Either true or false.
       - INSTALL_ACTIVE_GITHUB_FORKS=true # Whether to install Active GitHub Forks. Either true or false.
+      - INSTALL_NOISE=true # Whether to install php-noise. Either true or false.
       - DOMAIN=www.example.com # The address of the device this container is running on. Can be an IP or sub.domain.tld.
     volumes:
       - /host/path/to/config:/config # Contains all application data and base-image config files
@@ -98,6 +100,7 @@ docker create \
   -e INSTALL_DCC=true \
   -e INSTALL_COMPOSERIZE=true \
   -e INSTALL_ACTIVE_GITHUB_FORKS=true \
+  -e INSTALL_NOISE=true \
   -e DOMAIN=www.example.com \
   -v /host/path/to/config:/config \
   -p 443:443 \
@@ -128,6 +131,7 @@ INSTALL_NGINXCONFIG_IO | Either `true` or `false`.
 INSTALL_TGEN | Either `true` or `false`.
 INSTALL_TRIANGULATOR | Either `true` or `false`.
 INSTALL_ACTIVE_GITHUB_FORKS | Either `true` or `false`.
+INSTALL_NOISE | Either `true` or `false`.
 ports | The port where the service will be available at.
 
 ## INSTALL and .lock files
@@ -179,6 +183,7 @@ services:
       - INSTALL_DCC=true # Whether to install dcc. Either true or false.
       - INSTALL_COMPOSERIZE=true # Whether to install composerize. Either true or false.
       - INSTALL_ACTIVE_GITHUB_FORKS=true # Whether to install Active GitHub Forks. Either true or false.
+      - INSTALL_NOISE=true # Whether to install php-noise. Either true or false.
       - DOMAIN=www.example.com # The address of the device this container is running on. Can be an IP or sub.domain.tld.
     volumes:
       - /host/path/to/config:/config # Contains all application data and base-image config files
