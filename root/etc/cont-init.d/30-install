@@ -140,6 +140,29 @@ else
   echo "**** tgen already installed, skipping  ****"
 fi
 
+# php-noise
+if [ ! -f /config/www/noise.lock ] && [ $INSTALL_PHP_NOISE = "true" ]; then
+  echo "**** Installing php-noise ****"
+  git clone \
+    https://github.com/Griefed/php-noise.com.git \
+      /tmp/noise
+  mv /tmp/noise/public /config/www/noise
+  rm -Rf /tmp/noise
+  git clone \
+    https://github.com/RundesBalli/php-noise.git \
+      /tmp/random
+  mkdir -p /config/www/noise/random
+  mv /tmp/random/noise.php /config/www/noise/random/index.php
+  rm -Rf /tmp/random
+  touch /config/www/noise.lock
+elif [ $INSTALL_PHP_NOISE = "false" ] && [ -f /config/www/noise.lock ]; then
+  echo "**** Uninstalling php-noise ****"
+  rm -Rf /config/www/noise
+  rm -f /config/www/noise.lock
+else
+  echo "**** php-noise already installed, skipping ****"
+fi
+
 # Permission Stuffs
 chown -R \
   abc:abc \
