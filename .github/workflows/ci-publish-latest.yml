@@ -3,7 +3,7 @@ name: ci-publish-latest
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   multi-registries:
