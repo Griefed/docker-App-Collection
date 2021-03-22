@@ -16,3 +16,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# IntelliJ Idea
+.idea
