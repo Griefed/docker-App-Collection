@@ -41,6 +41,8 @@ App-Collection | Screenshots
 [![sui-dashboard-status](https://i.griefed.de/images/2020/11/19/docker-App-Collection_screenshot.png)](https://github.com/ThreadR-r/sui-dashboard-status) | [![triangulator](https://i.griefed.de/images/2020/11/19/docker-App-Collection_triangulator_screenshot.png)](https://github.com/maeglin89273/triangulator)
 [![tgen](https://i.griefed.de/images/2020/11/28/docker-App-Collection_tgen_screenshot.png)](https://github.com/schalkt/tgen) | [![php-noise](https://i.griefed.de/images/2021/01/22/docker-App-Collection_noise_screenshot.png)](https://github.com/RundesBalli/php-noise.com)
 
+[[_TOC_]]
+
 ---
 
 Creates a Container which runs [Griefed's](https://github.com/Griefed) [docker-App-Collection](https://github.com/Griefed/docker-App-Collection), with [lsiobase/nginx](https://hub.docker.com/r/lsiobase/lsiobase/nginx) as the base image, similar to https://apps.griefed.de.
