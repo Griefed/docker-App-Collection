@@ -3,5 +3,7 @@
   "extends": [
     "config:base"
   ],
-  "prConcurrentLimit": 5
+  "prConcurrentLimit": 5,
+  "labels": ["dependencies"],
+  "assignees": ["Griefed"]
 }
