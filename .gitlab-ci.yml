@@ -23,8 +23,8 @@ test docker:
       --push
       --no-cache
       --platform linux/amd64,linux/arm64
-      --tag "index.docker.io/$DOCKERHUB_USER/$DOCKERHUB_REPO:develop"
-      --tag "ghcr.io/$DOCKERHUB_USER/$DOCKERHUB_REPO:develop" .
+      --tag "index.docker.io/$DOCKERHUB_USER/$DOCKERHUB_REPO:develop-$CI_COMMIT_SHORT_SHA"
+      --tag "ghcr.io/$DOCKERHUB_USER/$DOCKERHUB_REPO:develop-$CI_COMMIT_SHORT_SHA" .
   except:
     refs:
       - tags
