@@ -1,4 +1,4 @@
-FROM lsiobase/nginx:3.14
+FROM lsiobase/nginx:3.15
 
 LABEL maintainer="Griefed <griefed@griefed.de>"
 
