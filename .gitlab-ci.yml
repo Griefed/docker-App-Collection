@@ -4,10 +4,10 @@ stages:
   - build
 
 services:
-  - name: ghcr.io/griefed/gitlab-ci-cd:2.2.2
+  - name: ghcr.io/griefed/gitlab-ci-cd:2.2.3
     alias: docker
 
-image: ghcr.io/griefed/gitlab-ci-cd:2.2.2
+image: ghcr.io/griefed/gitlab-ci-cd:2.2.3
 
 workflow:
   rules:
@@ -19,7 +19,7 @@ workflow:
 
 test docker:
   stage: test
-  image: ghcr.io/griefed/gitlab-ci-cd:2.2.2
+  image: ghcr.io/griefed/gitlab-ci-cd:2.2.3
   variables:
     project_name: $CI_PROJECT_NAME
     SEMANTIC_RELEASE_PACKAGE: $CI_PROJECT_NAME
@@ -45,7 +45,7 @@ test docker:
 release:
   needs: ['test docker']
   stage: release
-  image: ghcr.io/griefed/gitlab-ci-cd:2.2.2
+  image: ghcr.io/griefed/gitlab-ci-cd:2.2.3
   variables:
     project_name: $CI_PROJECT_NAME
     SEMANTIC_RELEASE_PACKAGE: $CI_PROJECT_NAME
@@ -61,7 +61,7 @@ release:
 
 build:
   stage: build
-  image: ghcr.io/griefed/gitlab-ci-cd:2.2.2
+  image: ghcr.io/griefed/gitlab-ci-cd:2.2.3
   variables:
     project_name: $CI_PROJECT_NAME
     SEMANTIC_RELEASE_PACKAGE: $CI_PROJECT_NAME
