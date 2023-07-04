@@ -4,10 +4,10 @@ stages:
   - build
 
 services:
-  - name: ghcr.io/griefed/gitlab-ci-cd:2.2.11
+  - name: ghcr.io/griefed/gitlab-ci-cd:2.2.12
     alias: docker
 
-image: ghcr.io/griefed/gitlab-ci-cd:2.2.11
+image: ghcr.io/griefed/gitlab-ci-cd:2.2.12
 
 workflow:
   rules:
